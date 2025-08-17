@@ -11,3 +11,12 @@ export interface inwardEntry {
   createdAt: string;
   by_user: string;
 }
+
+export interface User {
+  _id?: string;
+  username: string;
+  name: string;
+  passwordHash: string;
+  createdAt: string;
+  role: "admin" | "user";
+}

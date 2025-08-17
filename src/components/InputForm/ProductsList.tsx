@@ -11,7 +11,6 @@ const ProductsList: React.FC<{
     }))
   );
   const [productList, setProductList] = useState<singleProduct[]>([]);
-  console.log("productList", productList);
   //
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

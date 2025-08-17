@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store/store";
-import { toggleNav } from "@/app/store/ui";
-import { usePathname } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { logout } from "../app/store/auth";
+import { usePathname, useRouter } from "next/navigation";
+import { setNavExpanded } from "@/app/store/ui";
 
 const navItems = [
   {
@@ -36,15 +36,27 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const dispatch = useDispatch();
   const navExpanded = useSelector((state: RootState) => state.ui.navExpanded);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (navExpanded) {
-      dispatch(toggleNav());
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+      dispatch(logout());
+      router.push("/");
+    } catch (error) {
+      console.error("Logout failed:", error);
     }
-  }, [pathname]);
+  };
+
+  useEffect(() => {
+    if (pathname !== "/dashboard" && navExpanded) {
+      dispatch(setNavExpanded(false));
+    }
+  }, [pathname, navExpanded]);
 
   return (
     <aside
@@ -63,29 +75,53 @@ export default function Navbar() {
         />
         {navExpanded && (
           <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
-            User
+            {user?.name || "User"}
           </span>
         )}
       </div>
-      {navItems.map((item) => (
-        <Link
-          key={item.name}
-          href={item.path}
-          className={`flex items-center ${
-            navExpanded ? "justify-start w-[180px] pl-6" : "justify-center w-12"
-          } h-14 mb-4 rounded-2xl text-gray-900 text-lg no-underline transition-all duration-300`}>
-          <img
-            src={item.icon}
-            alt={item.name}
-            className='w-12 h-12 object-contain'
-          />
-          {navExpanded && (
-            <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
-              {item.name}
-            </span>
-          )}
-        </Link>
-      ))}
+      {navItems.map((item) =>
+        item.name === "Log-out" ? (
+          <div
+            key={item.name}
+            onClick={handleLogout}
+            className={`flex items-center ${
+              navExpanded
+                ? "justify-start w-[180px] pl-6"
+                : "justify-center w-12"
+            } h-14 mb-4 rounded-2xl text-gray-900 text-lg transition-all duration-200 cursor-pointer hover:bg-blue-200`}>
+            <img
+              src={item.icon}
+              alt={item.name}
+              className='w-12 h-12 object-contain'
+            />
+            {navExpanded && (
+              <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
+                {item.name}
+              </span>
+            )}
+          </div>
+        ) : (
+          <Link
+            key={item.name}
+            href={item.path}
+            className={`flex items-center ${
+              navExpanded
+                ? "justify-start w-[180px] pl-6"
+                : "justify-center w-12"
+            } h-14 mb-4 rounded-2xl text-gray-900 text-lg no-underline transition-all duration-200`}>
+            <img
+              src={item.icon}
+              alt={item.name}
+              className='w-12 h-12 object-contain'
+            />
+            {navExpanded && (
+              <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
+                {item.name}
+              </span>
+            )}
+          </Link>
+        )
+      )}
     </aside>
   );
 }

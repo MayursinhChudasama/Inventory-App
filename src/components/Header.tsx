@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleNav } from "../app/store/ui";
 import { RootState } from "../app/store/store";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <div className='w-full fixed top-0 left-0 z-[200]'>
       <div className='flex items-center bg-blue-200 h-14 relative w-full'>
-        {pathname == "/" && (
+        {pathname == "/dashboard" && (
           <button
             aria-label='Toggle navigation'
             onClick={() => dispatch(toggleNav())}
@@ -26,9 +26,9 @@ export default function Header() {
             />
           </button>
         )}
-        {pathname !== "/" && (
+        {pathname !== "/dashboard" && (
           <Link
-            href='/'
+            href='/dashboard'
             aria-label='Back to home'
             className='flex items-center justify-center h-10 w-10 ml-2 mr-2'>
             <img
@@ -39,7 +39,7 @@ export default function Header() {
           </Link>
         )}
         <div className='flex-1 text-center font-semibold text-xl tracking-wide text-black'>
-          "HEADING"
+          HEADING
         </div>
       </div>
     </div>
