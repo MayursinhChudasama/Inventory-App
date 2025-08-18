@@ -60,7 +60,7 @@ export default function AuthWrapper({
     <>
       {!isLoginPage && isAuthenticated && <Navbar />}
       {!isLoginPage && isAuthenticated && <Header />}
-      <div className={!isLoginPage && isAuthenticated ? "pt-14" : ""}>
+      <div className={!isLoginPage && isAuthenticated ? "pt-14 pl-20" : ""}>
         {children}
       </div>
     </>

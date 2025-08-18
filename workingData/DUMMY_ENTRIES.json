@@ -1,0 +1,2702 @@
+[
+  {
+    "type": "outward",
+    "challan_no": "out-01",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-31T02:59:52.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia XZs",
+        "quantity": 32
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZs",
+        "quantity": 45
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia Pro-I",
+        "quantity": 98
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6",
+        "quantity": 95
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9",
+        "quantity": 60
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7",
+        "quantity": 54
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZs",
+        "quantity": 19
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro",
+        "quantity": 18
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A98",
+        "quantity": 70
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-02",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-30T03:49:48.000Z",
+    "products": [
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 5",
+        "quantity": 78
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo iQOO 12",
+        "quantity": 16
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S23+",
+        "quantity": 22
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 5",
+        "quantity": 37
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XA2",
+        "quantity": 33
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X70 Pro",
+        "quantity": 67
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y77",
+        "quantity": 36
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13 Pro",
+        "quantity": 72
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 5",
+        "quantity": 14
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-01",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-09T00:50:02.000Z",
+    "products": [
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12",
+        "quantity": 66
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT Neo 3",
+        "quantity": 50
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X3 Pro",
+        "quantity": 60
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S17",
+        "quantity": 43
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12",
+        "quantity": 29
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Pro Max",
+        "quantity": 92
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia C32",
+        "quantity": 46
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G42",
+        "quantity": 12
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N3 Flip",
+        "quantity": 52
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-02",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-15T03:01:57.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 V",
+        "quantity": 68
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 52
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro+",
+        "quantity": 96
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 3.2",
+        "quantity": 27
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 8",
+        "quantity": 94
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X100 Pro",
+        "quantity": 97
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 1 IV",
+        "quantity": 38
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N2",
+        "quantity": 77
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 VI",
+        "quantity": 39
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-03",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-13T03:24:40.000Z",
+    "products": [
+      {
+        "brand": "Google",
+        "model": "Pixel 10",
+        "quantity": 21
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V29",
+        "quantity": 25
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6 Pro",
+        "quantity": 34
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 VI",
+        "quantity": 16
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13T Pro",
+        "quantity": 90
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 2 XL",
+        "quantity": 98
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo 50",
+        "quantity": 22
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X90",
+        "quantity": 21
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco M6 Pro",
+        "quantity": 27
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-03",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-27T03:35:53.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 VI",
+        "quantity": 97
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT 3",
+        "quantity": 59
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X80",
+        "quantity": 53
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A55",
+        "quantity": 31
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S16",
+        "quantity": 54
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme C35",
+        "quantity": 37
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7",
+        "quantity": 98
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 6.2",
+        "quantity": 58
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y100",
+        "quantity": 71
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-04",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-20T09:50:53.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ3",
+        "quantity": 18
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 16 Pro Max",
+        "quantity": 57
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M34",
+        "quantity": 84
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 10",
+        "quantity": 62
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 5",
+        "quantity": 26
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X7",
+        "quantity": 64
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi Mix Fold 3",
+        "quantity": 23
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 9RT",
+        "quantity": 20
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7a",
+        "quantity": 51
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-05",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-28T17:09:40.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 V",
+        "quantity": 58
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 57
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S21",
+        "quantity": 16
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo iQOO 12",
+        "quantity": 77
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A79",
+        "quantity": 31
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 11 Pro",
+        "quantity": 33
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 mini",
+        "quantity": 68
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9",
+        "quantity": 29
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12R",
+        "quantity": 70
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-06",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-30T04:49:27.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia Pro-I",
+        "quantity": 51
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 8 Pro",
+        "quantity": 98
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 13 Pro",
+        "quantity": 26
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 12+",
+        "quantity": 86
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6",
+        "quantity": 58
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 9 Pro",
+        "quantity": 23
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy F55",
+        "quantity": 91
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi Mix Fold 3",
+        "quantity": 98
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 17
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-07",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-20T19:59:45.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo iQOO Neo 9",
+        "quantity": 76
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi 10",
+        "quantity": 39
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 8",
+        "quantity": 31
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme C53",
+        "quantity": 68
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi 13C",
+        "quantity": 27
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme V30",
+        "quantity": 77
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V23",
+        "quantity": 66
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S22",
+        "quantity": 27
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 13 Pro Max",
+        "quantity": 20
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-08",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-06T16:27:29.000Z",
+    "products": [
+      {
+        "brand": "Google",
+        "model": "Pixel 3",
+        "quantity": 11
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 VI",
+        "quantity": 93
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A76",
+        "quantity": 89
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 9R",
+        "quantity": 77
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y56",
+        "quantity": 95
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 5a",
+        "quantity": 85
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X100 Pro",
+        "quantity": 49
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo N55",
+        "quantity": 61
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT Master",
+        "quantity": 43
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-09",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-09T06:35:07.000Z",
+    "products": [
+      {
+        "brand": "Google",
+        "model": "Pixel 7",
+        "quantity": 53
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 Plus",
+        "quantity": 73
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 1 II",
+        "quantity": 51
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 4 XL",
+        "quantity": 86
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7 Pro",
+        "quantity": 70
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y78",
+        "quantity": 22
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 13 mini",
+        "quantity": 26
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S10",
+        "quantity": 59
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N2",
+        "quantity": 89
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-04",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-07T18:09:32.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia L3",
+        "quantity": 83
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A14",
+        "quantity": 80
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y36",
+        "quantity": 83
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 12
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro XL",
+        "quantity": 62
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10R",
+        "quantity": 44
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZs",
+        "quantity": 40
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y78",
+        "quantity": 43
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi K70",
+        "quantity": 15
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-10",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-06T10:22:44.000Z",
+    "products": [
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S10",
+        "quantity": 56
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 9RT",
+        "quantity": 85
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 8210 4G",
+        "quantity": 81
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ2",
+        "quantity": 57
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S24 Ultra",
+        "quantity": 58
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12",
+        "quantity": 41
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X Fold 3",
+        "quantity": 15
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro+",
+        "quantity": 50
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 3a",
+        "quantity": 99
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-05",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-24T00:53:36.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y77",
+        "quantity": 45
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 16 Pro",
+        "quantity": 16
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 4a 5G",
+        "quantity": 55
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 9RT",
+        "quantity": 49
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 3 XL",
+        "quantity": 31
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X7 Ultra",
+        "quantity": 89
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT 3",
+        "quantity": 18
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 8.1",
+        "quantity": 24
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M55",
+        "quantity": 85
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-06",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-01T04:50:01.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro Max",
+        "quantity": 100
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 4a",
+        "quantity": 17
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro",
+        "quantity": 92
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6 Pro",
+        "quantity": 86
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N2",
+        "quantity": 79
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo iQOO Neo 9",
+        "quantity": 69
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V23",
+        "quantity": 50
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S10",
+        "quantity": 81
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13",
+        "quantity": 77
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-07",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-21T06:36:04.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo V29",
+        "quantity": 25
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 11",
+        "quantity": 66
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A2 Pro",
+        "quantity": 93
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13T Pro",
+        "quantity": 20
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 7",
+        "quantity": 30
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V27",
+        "quantity": 100
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro",
+        "quantity": 23
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7T",
+        "quantity": 65
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A76",
+        "quantity": 49
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-11",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-15T12:29:50.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y78",
+        "quantity": 82
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro Fold",
+        "quantity": 56
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Open",
+        "quantity": 86
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 7 Pro",
+        "quantity": 36
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G400",
+        "quantity": 99
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ2",
+        "quantity": 96
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia L4",
+        "quantity": 89
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A59",
+        "quantity": 12
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S21+",
+        "quantity": 48
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-12",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-05T14:26:37.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 9",
+        "quantity": 76
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZs",
+        "quantity": 69
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi K60",
+        "quantity": 47
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord CE 4",
+        "quantity": 44
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7a",
+        "quantity": 43
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 9 Pro+",
+        "quantity": 73
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 9 Pro+",
+        "quantity": 15
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 12",
+        "quantity": 61
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme V30",
+        "quantity": 35
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-08",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-12T16:14:57.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro Max",
+        "quantity": 73
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT 2 Pro",
+        "quantity": 94
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S16",
+        "quantity": 65
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme C53",
+        "quantity": 56
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G400",
+        "quantity": 59
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo N55",
+        "quantity": 87
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X90 Pro",
+        "quantity": 53
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme C35",
+        "quantity": 75
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 4a",
+        "quantity": 52
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-13",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-14T08:12:51.000Z",
+    "products": [
+      {
+        "brand": "Google",
+        "model": "Pixel XL",
+        "quantity": 63
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M55",
+        "quantity": 49
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 4.2",
+        "quantity": 75
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo T3",
+        "quantity": 50
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord 3",
+        "quantity": 72
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 16 Pro Max",
+        "quantity": 48
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia XR21",
+        "quantity": 39
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X7",
+        "quantity": 53
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT 5 Pro",
+        "quantity": 33
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-09",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-12T10:03:10.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 8 Pro",
+        "quantity": 48
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 12",
+        "quantity": 89
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2760 Flip",
+        "quantity": 36
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 38
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2.4",
+        "quantity": 85
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2.4",
+        "quantity": 12
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Ace 3",
+        "quantity": 93
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 9 Pro",
+        "quantity": 21
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord N20",
+        "quantity": 64
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-14",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-17T03:57:02.000Z",
+    "products": [
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Open",
+        "quantity": 16
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S24",
+        "quantity": 65
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 VI",
+        "quantity": 16
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi 9",
+        "quantity": 15
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco F5",
+        "quantity": 30
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7 Pro",
+        "quantity": 34
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V29",
+        "quantity": 19
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 II",
+        "quantity": 11
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy Z Fold5",
+        "quantity": 28
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-15",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-04T18:10:59.000Z",
+    "products": [
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 6",
+        "quantity": 46
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12",
+        "quantity": 79
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y77",
+        "quantity": 50
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12 Pro",
+        "quantity": 41
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel XL",
+        "quantity": 65
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y36",
+        "quantity": 27
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 5.4",
+        "quantity": 100
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi 9",
+        "quantity": 85
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-10",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-15T10:46:37.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 V",
+        "quantity": 91
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 9",
+        "quantity": 90
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 8T+",
+        "quantity": 15
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 13 mini",
+        "quantity": 97
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Pro Max",
+        "quantity": 36
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A79",
+        "quantity": 72
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S23 Ultra",
+        "quantity": 33
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone XS Max",
+        "quantity": 22
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco F5",
+        "quantity": 37
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-16",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-26T07:18:12.000Z",
+    "products": [
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 V",
+        "quantity": 31
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X100",
+        "quantity": 26
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y56",
+        "quantity": 22
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT 2 Pro",
+        "quantity": 70
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A35",
+        "quantity": 81
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 12",
+        "quantity": 67
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi K70",
+        "quantity": 81
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo V25",
+        "quantity": 15
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ2",
+        "quantity": 65
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-11",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-25T02:00:07.000Z",
+    "products": [
+      {
+        "brand": "Nokia",
+        "model": "Nokia C32",
+        "quantity": 63
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 14 Plus",
+        "quantity": 21
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S10",
+        "quantity": 65
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X Fold 3",
+        "quantity": 53
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro+",
+        "quantity": 86
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 Plus",
+        "quantity": 99
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A35",
+        "quantity": 56
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Pro",
+        "quantity": 78
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 13 Pro",
+        "quantity": 44
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-12",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-06T04:04:00.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 16 Pro",
+        "quantity": 41
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M34",
+        "quantity": 19
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 1.4",
+        "quantity": 65
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X Fold 3",
+        "quantity": 53
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y28",
+        "quantity": 63
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2660 Flip",
+        "quantity": 20
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X Flip",
+        "quantity": 59
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord N20",
+        "quantity": 67
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 5.4",
+        "quantity": 16
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-13",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-02T09:30:43.000Z",
+    "products": [
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A34",
+        "quantity": 57
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy F55",
+        "quantity": 65
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco M6 Pro",
+        "quantity": 57
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 4.2",
+        "quantity": 79
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 10",
+        "quantity": 95
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N2",
+        "quantity": 77
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ2",
+        "quantity": 26
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 12",
+        "quantity": 81
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 1.4",
+        "quantity": 48
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-14",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-02T13:28:31.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X7 Ultra",
+        "quantity": 76
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ2",
+        "quantity": 25
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia C22",
+        "quantity": 63
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo F23",
+        "quantity": 84
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Ace 3",
+        "quantity": 52
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 11 Pro",
+        "quantity": 69
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord 3",
+        "quantity": 46
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13 Ultra",
+        "quantity": 15
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 12 Pro+",
+        "quantity": 73
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-17",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-16T22:12:07.000Z",
+    "products": [
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S22 Ultra",
+        "quantity": 98
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo 70 Pro",
+        "quantity": 95
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y36",
+        "quantity": 77
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 II",
+        "quantity": 22
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S21+",
+        "quantity": 22
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13 Pro",
+        "quantity": 90
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 8T+",
+        "quantity": 31
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 90
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 8T",
+        "quantity": 61
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-15",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-10T22:52:46.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo A96",
+        "quantity": 93
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia C210",
+        "quantity": 25
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 8 Pro",
+        "quantity": 47
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S22 Ultra",
+        "quantity": 47
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 14 Plus",
+        "quantity": 32
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme GT Neo 5",
+        "quantity": 89
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo iQOO 11",
+        "quantity": 32
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A76",
+        "quantity": 47
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord 2T",
+        "quantity": 78
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-16",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-09T14:27:46.000Z",
+    "products": [
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi Pad 6",
+        "quantity": 92
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia L3",
+        "quantity": 85
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi Mix Fold 3",
+        "quantity": 87
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo 70 Pro",
+        "quantity": 89
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo F23",
+        "quantity": 73
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 3.4",
+        "quantity": 95
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme C53",
+        "quantity": 61
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord CE 3",
+        "quantity": 49
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 11 Pro+",
+        "quantity": 55
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-17",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-26T02:01:08.000Z",
+    "products": [
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10T",
+        "quantity": 64
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 8 Pro",
+        "quantity": 32
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco M6 Pro",
+        "quantity": 30
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 11 Pro Max",
+        "quantity": 46
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia L4",
+        "quantity": 69
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 V",
+        "quantity": 96
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G400",
+        "quantity": 17
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 110",
+        "quantity": 80
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S21+",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-18",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-13T10:28:35.000Z",
+    "products": [
+      {
+        "brand": "Nokia",
+        "model": "Nokia 6300 4G",
+        "quantity": 40
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 11T",
+        "quantity": 75
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XA1 Ultra",
+        "quantity": 65
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro Max",
+        "quantity": 63
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme V30",
+        "quantity": 10
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 11 Pro",
+        "quantity": 44
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia C32",
+        "quantity": 54
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 12 Pro",
+        "quantity": 46
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7 Pro",
+        "quantity": 17
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-19",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-09T21:34:31.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro",
+        "quantity": 96
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro",
+        "quantity": 68
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13 Ultra",
+        "quantity": 66
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S23+",
+        "quantity": 14
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 11i",
+        "quantity": 81
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 mini",
+        "quantity": 30
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ3",
+        "quantity": 64
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S16",
+        "quantity": 72
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 1 IV",
+        "quantity": 84
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-18",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-18T03:15:16.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y56",
+        "quantity": 52
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco M6 Pro",
+        "quantity": 53
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M35",
+        "quantity": 24
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 8 Pro",
+        "quantity": 53
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A58",
+        "quantity": 75
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10 Pro",
+        "quantity": 62
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy Z Fold5",
+        "quantity": 59
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7T",
+        "quantity": 47
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6",
+        "quantity": 98
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-19",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-03T22:16:13.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find N3 Flip",
+        "quantity": 70
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia L4",
+        "quantity": 52
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Pro",
+        "quantity": 43
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy Z Fold5",
+        "quantity": 18
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 14",
+        "quantity": 20
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 7",
+        "quantity": 76
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S23+",
+        "quantity": 32
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi K60",
+        "quantity": 15
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y77",
+        "quantity": 51
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-20",
+    "category": "black Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-21T16:35:49.000Z",
+    "products": [
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro",
+        "quantity": 50
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10T",
+        "quantity": 73
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S21 Ultra",
+        "quantity": 87
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 5a",
+        "quantity": 52
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo 50",
+        "quantity": 11
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 6",
+        "quantity": 29
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo T3",
+        "quantity": 74
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia L3",
+        "quantity": 31
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7",
+        "quantity": 51
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-20",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-23T14:11:58.000Z",
+    "products": [
+      {
+        "brand": "Realme",
+        "model": "Realme GT 3",
+        "quantity": 91
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 14 Pro",
+        "quantity": 39
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy Note20",
+        "quantity": 63
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 1 VI",
+        "quantity": 54
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 11i",
+        "quantity": 70
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone XS Max",
+        "quantity": 78
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X7 Ultra",
+        "quantity": 91
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo F23",
+        "quantity": 87
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco X5 Pro",
+        "quantity": 65
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-21",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-02T21:07:10.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo K10",
+        "quantity": 47
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A79",
+        "quantity": 77
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S18",
+        "quantity": 29
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo X Fold 3",
+        "quantity": 51
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 10 Pro",
+        "quantity": 99
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel XL",
+        "quantity": 14
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro",
+        "quantity": 98
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A54",
+        "quantity": 47
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 4 XL",
+        "quantity": 20
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-22",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-04T19:25:13.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone XS",
+        "quantity": 98
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 11",
+        "quantity": 59
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G60",
+        "quantity": 67
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y56",
+        "quantity": 13
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 8 Pro",
+        "quantity": 68
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 VI",
+        "quantity": 29
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo T3",
+        "quantity": 32
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone X",
+        "quantity": 84
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 7 Pro",
+        "quantity": 65
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-23",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-11T23:09:21.000Z",
+    "products": [
+      {
+        "brand": "Oppo",
+        "model": "Oppo K10",
+        "quantity": 78
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 13 Pro",
+        "quantity": 25
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7 Pro",
+        "quantity": 23
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2780 Flip",
+        "quantity": 88
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia XZ3",
+        "quantity": 63
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord N30",
+        "quantity": 43
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 8 Pro",
+        "quantity": 30
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo S17",
+        "quantity": 63
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 10R",
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-24",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-27T16:28:47.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 12 Pro Max",
+        "quantity": 94
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 3.4",
+        "quantity": 46
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A96",
+        "quantity": 56
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro XL",
+        "quantity": 97
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia Pro-I",
+        "quantity": 32
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Pro",
+        "quantity": 20
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord CE 3",
+        "quantity": 17
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy M35",
+        "quantity": 74
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 13 Ultra",
+        "quantity": 38
+      }
+    ]
+  },
+  {
+    "type": "inward",
+    "challan_no": "in-25",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-19T07:10:05.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo X90",
+        "quantity": 100
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia G310",
+        "quantity": 22
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco X6 Pro",
+        "quantity": 73
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 8.1",
+        "quantity": 20
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 8",
+        "quantity": 24
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone SE (2020)",
+        "quantity": 45
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A15",
+        "quantity": 55
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 9 Pro",
+        "quantity": 20
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Find X5 Pro",
+        "quantity": 72
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-21",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-12T00:43:08.000Z",
+    "products": [
+      {
+        "brand": "Xiaomi",
+        "model": "Poco C65",
+        "quantity": 25
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 2 XL",
+        "quantity": 67
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 12 Pro",
+        "quantity": 62
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 8210 4G",
+        "quantity": 50
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 8 Pro",
+        "quantity": 72
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 III",
+        "quantity": 76
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo F21 Pro",
+        "quantity": 17
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2760 Flip",
+        "quantity": 79
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 8",
+        "quantity": 97
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-22",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-02T02:02:48.000Z",
+    "products": [
+      {
+        "brand": "Apple",
+        "model": "iPhone 15 Plus",
+        "quantity": 93
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 9 Pro",
+        "quantity": 74
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 9 PureView",
+        "quantity": 23
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel XL",
+        "quantity": 77
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo Reno 11",
+        "quantity": 80
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 5 III",
+        "quantity": 57
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 7T",
+        "quantity": 44
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A2 Pro",
+        "quantity": 62
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme Narzo 70 Pro",
+        "quantity": 85
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-23",
+    "category": "black Cover",
+    "user": "manav",
+    "createdAt": "2025-08-30T16:15:23.000Z",
+    "products": [
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi A3",
+        "quantity": 21
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 9 Pro",
+        "quantity": 83
+      },
+      {
+        "brand": "Sony",
+        "model": "Xperia 10 IV",
+        "quantity": 89
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia XR21",
+        "quantity": 94
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 11R",
+        "quantity": 13
+      },
+      {
+        "brand": "Google",
+        "model": "Pixel 3",
+        "quantity": 42
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy A55",
+        "quantity": 22
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 2.4",
+        "quantity": 27
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Poco F6",
+        "quantity": 22
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-24",
+    "category": "white Cover",
+    "user": "manav",
+    "createdAt": "2025-08-21T13:44:48.000Z",
+    "products": [
+      {
+        "brand": "Google",
+        "model": "Pixel 4a",
+        "quantity": 32
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A2 Pro",
+        "quantity": 13
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone 14 Pro",
+        "quantity": 50
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord 3",
+        "quantity": 80
+      },
+      {
+        "brand": "Apple",
+        "model": "iPhone XS Max",
+        "quantity": 90
+      },
+      {
+        "brand": "Vivo",
+        "model": "Vivo Y56",
+        "quantity": 52
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 1.4",
+        "quantity": 85
+      },
+      {
+        "brand": "Nokia",
+        "model": "Nokia 8.3 5G",
+        "quantity": 100
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Xiaomi 14 Ultra",
+        "quantity": 66
+      }
+    ]
+  },
+  {
+    "type": "outward",
+    "challan_no": "out-25",
+    "category": "white Cover",
+    "user": "mayur",
+    "createdAt": "2025-08-10T10:15:33.000Z",
+    "products": [
+      {
+        "brand": "Vivo",
+        "model": "Vivo X70 Pro",
+        "quantity": 55
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12",
+        "quantity": 70
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus 12R",
+        "quantity": 97
+      },
+      {
+        "brand": "Samsung",
+        "model": "Galaxy S23",
+        "quantity": 62
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord CE 3",
+        "quantity": 93
+      },
+      {
+        "brand": "Oppo",
+        "model": "Oppo A59",
+        "quantity": 53
+      },
+      {
+        "brand": "Realme",
+        "model": "Realme 8 Pro",
+        "quantity": 31
+      },
+      {
+        "brand": "OnePlus",
+        "model": "OnePlus Nord CE 3",
+        "quantity": 79
+      },
+      {
+        "brand": "Xiaomi",
+        "model": "Redmi Note 13 Pro",
+        "quantity": 37
+      }
+    ]
+  }
+]

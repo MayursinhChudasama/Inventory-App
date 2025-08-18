@@ -13,10 +13,23 @@ export interface inwardEntry {
 }
 
 export interface User {
-  _id?: string;
+  _id?: string | undefined;
   username: string;
   name: string;
   passwordHash: string;
   createdAt: string;
   role: "admin" | "user";
+}
+
+export interface CreateUser {
+  name: string;
+  username: string;
+  password: string;
+}
+
+export interface UpdateUser {
+  name?: string;
+  username?: string;
+  passwordHash?: string;
+  role?: "admin" | "user";
 }

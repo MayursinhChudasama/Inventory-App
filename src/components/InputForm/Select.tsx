@@ -1,20 +1,21 @@
 const Select: React.FC<{
-  options: string[];
+  defValue?: string;
+  options?: string[];
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   productKey?: string;
-}> = ({ options, onChange, handleChange, productKey }) => {
+}> = ({ defValue, options, onChange, handleChange, productKey }) => {
   return (
     <div>
       <select
-        defaultValue={"select"}
+        defaultValue={defValue || "select"}
         onChange={productKey ? handleChange : onChange}>
         <option
           value='select'
           disabled>
           Choose
         </option>
-        {options.map((opt) => (
+        {options?.map((opt) => (
           <option
             key={opt}
             value={opt}>

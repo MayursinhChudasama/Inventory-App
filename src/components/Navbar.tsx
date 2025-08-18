@@ -41,6 +41,9 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
+  const currentTab = navItems
+    .filter((tab) => tab.path == pathname)
+    .map((tab) => tab.name)[0];
 
   const handleLogout = async () => {
     try {
@@ -61,67 +64,46 @@ export default function Navbar() {
   return (
     <aside
       className={`fixed top-0 mt-8 left-0 h-screen bg-blue-200 flex flex-col transition-all duration-200 shadow-md z-[100] ${
-        navExpanded ? "w-70 items-start" : "w-16 items-center"
+        navExpanded ? "w-70 items-start" : "w-20 items-center"
       }`}
       style={{ paddingTop: 56 }}>
       <div
         className={`flex items-center ${
-          navExpanded ? "justify-start w-[180px] pl-6" : "justify-center w-12"
-        } h-14 mb-4 rounded-2xl text-gray-900 text-lg transition-all duration-300 select-none`}>
+          navExpanded ? "justify-start w-70 pl-6" : "justify-center w-20 "
+        } h-14 mb-4  rounded-2xl text-gray-900 text-lg transition-all duration-300 select-none`}>
         <img
           src='/user.svg'
           alt='user'
-          className='w-12 h-12 object-contain'
+          className='w-12 h-12 rounded-2xl object-contain bg-[#008CFF]'
         />
         {navExpanded && (
-          <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
+          <span className='ml-2 text-lg font-semibold whitespace-nowrap'>
             {user?.name || "User"}
           </span>
         )}
       </div>
-      {navItems.map((item) =>
-        item.name === "Log-out" ? (
-          <div
-            key={item.name}
-            onClick={handleLogout}
-            className={`flex items-center ${
-              navExpanded
-                ? "justify-start w-[180px] pl-6"
-                : "justify-center w-12"
-            } h-14 mb-4 rounded-2xl text-gray-900 text-lg transition-all duration-200 cursor-pointer hover:bg-blue-200`}>
-            <img
-              src={item.icon}
-              alt={item.name}
-              className='w-12 h-12 object-contain'
-            />
-            {navExpanded && (
-              <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
-                {item.name}
-              </span>
-            )}
-          </div>
-        ) : (
-          <Link
-            key={item.name}
-            href={item.path}
-            className={`flex items-center ${
-              navExpanded
-                ? "justify-start w-[180px] pl-6"
-                : "justify-center w-12"
-            } h-14 mb-4 rounded-2xl text-gray-900 text-lg no-underline transition-all duration-200`}>
-            <img
-              src={item.icon}
-              alt={item.name}
-              className='w-12 h-12 object-contain'
-            />
-            {navExpanded && (
-              <span className='ml-4 text-lg font-semibold whitespace-nowrap'>
-                {item.name}
-              </span>
-            )}
-          </Link>
-        )
-      )}
+      {navItems.map((item) => (
+        <Link
+          key={item.name}
+          href={item.name !== "Log-out" ? item.path : "/"}
+          onClick={item.name === "Log-out" ? handleLogout : undefined}
+          className={`flex items-center ${
+            navExpanded ? "justify-start w-70 pl-6" : "justify-center w-20"
+          } h-14 mb-4 rounded-2xl text-gray-900 text-lg no-underline transition-all duration-200`}>
+          <img
+            src={item.icon}
+            alt={item.name}
+            className={`w-12 h-12 rounded-2xl object-contain ${
+              item.name === currentTab ? "bg-[#1447E6]" : "bg-[#008CFF]"
+            }`}
+          />
+          {navExpanded && (
+            <span className='ml-2 text-lg font-semibold whitespace-nowrap '>
+              {item.name}
+            </span>
+          )}
+        </Link>
+      ))}
     </aside>
   );
 }
