@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   navExpanded: false,
+  currentTab: "Stock Dashboard",
 };
 
 const uiSlice = createSlice({
@@ -14,8 +15,11 @@ const uiSlice = createSlice({
     setNavExpanded: (state, action) => {
       state.navExpanded = action.payload;
     },
+    setCurrentTab: (state, action) => {
+      state.currentTab = action.payload;
+    },
   },
 });
 
-export const { toggleNav, setNavExpanded } = uiSlice.actions;
+export const { toggleNav, setNavExpanded, setCurrentTab } = uiSlice.actions;
 export default uiSlice.reducer;

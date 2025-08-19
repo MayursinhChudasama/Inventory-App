@@ -6,6 +6,7 @@ import { RootState } from "../app/store/store";
 import { setUser, setLoading } from "../app/store/auth";
 import Navbar from "./Navbar";
 import Header from "./Header";
+import Loading from "./Loading";
 
 export default function AuthWrapper({
   children,
@@ -49,18 +50,14 @@ export default function AuthWrapper({
   const isLoginPage = pathname === "/";
 
   if (loading) {
-    return (
-      <div className='min-h-screen bg-white text-blue-400 flex items-center justify-center'>
-        <div className='text-xl'>Loading...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
     <>
       {!isLoginPage && isAuthenticated && <Navbar />}
       {!isLoginPage && isAuthenticated && <Header />}
-      <div className={!isLoginPage && isAuthenticated ? "pt-14 pl-20" : ""}>
+      <div className={!isLoginPage && isAuthenticated ? "pt-14" : ""}>
         {children}
       </div>
     </>

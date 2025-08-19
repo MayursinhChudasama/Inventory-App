@@ -18,41 +18,38 @@ export default function SingleItem({
   const srNO = i + 1;
 
   return (
-    <div className='flex gap-x-4 items-end'>
-      <div className='flex flex-row items-center gap-x-2'>
+    <tr>
+      <td className='flex flex-row items-center gap-x-2'>
         <p>{srNO < 10 ? "0" + srNO : srNO}</p>
-      </div>
-      <div className='flex flex-row items-center gap-x-2'>
-        <label htmlFor='brand'>Brand</label>
+      </td>
+      <td className='flex flex-row items-center gap-x-2'>
         <Select
           options={["google", "iphone"]}
           handleChange={(e) => handleChange(e, i, "brand")}
           productKey='brand'
         />
-      </div>
-      <div className='flex flex-row items-center gap-x-2'>
-        <label htmlFor='model'>Model</label>
+      </td>
+      <td className='flex flex-row items-center gap-x-2'>
         <Select
           options={["pixel 6", "12 pro"]}
           handleChange={(e) => handleChange(e, i, "model")}
           productKey='model'
         />
-      </div>
-      <div className='flex flex-row items-center gap-x-2'>
-        <label htmlFor='qty'>Quantity</label>
+      </td>
+      <td className='flex flex-row items-center gap-x-2'>
         <input
           type='number'
           id='qty'
           onChange={(e) => handleChange(e, i, "qty")}
         />
-      </div>
-      <div className='flex flex-row items-center gap-x-2'>
+      </td>
+      <td className='flex flex-row items-center gap-x-2'>
         <button
           onClick={() => deleteItem(id, i)}
           type='button'>
           Delete
         </button>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 }

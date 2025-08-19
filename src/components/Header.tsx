@@ -1,19 +1,20 @@
 "use client";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleNav } from "../app/store/ui";
+import { toggleNav, setCurrentTab } from "../app/store/ui";
 import { RootState } from "../app/store/store";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Header() {
   const dispatch = useDispatch();
-  const navExpanded = useSelector((state: RootState) => state.ui.navExpanded);
   const pathname = usePathname();
+  const navExpanded = useSelector((state: RootState) => state.ui.navExpanded);
+  const currentTab = useSelector((state: RootState) => state.ui.currentTab);
 
   return (
     <div className='w-full fixed top-0 left-0 z-[200]'>
-      <div className='flex items-center bg-blue-200 h-14 relative w-full'>
+      <div className='flex justify-center items-center bg-blue-200 h-14 relative w-full'>
         {pathname == "/dashboard" && (
           <button
             aria-label='Toggle navigation'
@@ -28,6 +29,7 @@ export default function Header() {
         )}
         {pathname !== "/dashboard" && (
           <Link
+            onClick={() => dispatch(setCurrentTab("Stock Dashboard"))}
             href='/dashboard'
             aria-label='Back to home'
             className='flex items-center justify-center h-10 w-10 ml-2 mr-2'>
@@ -39,7 +41,7 @@ export default function Header() {
           </Link>
         )}
         <div className='flex-1 text-center font-semibold text-xl tracking-wide text-black'>
-          HEADING
+          {currentTab}
         </div>
       </div>
     </div>

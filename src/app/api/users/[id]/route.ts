@@ -32,10 +32,9 @@ export async function PATCH(
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
   }
   // updating a userDATA
-  console.log("ting 35");
 
   try {
-    const userId = await params.id;
+    const userId = params.id;
     const updateData: UpdateUser = await req.json();
 
     // Validate user ID

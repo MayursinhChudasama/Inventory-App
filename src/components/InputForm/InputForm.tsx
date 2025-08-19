@@ -39,33 +39,50 @@ const InputForm: React.FC = () => {
 
   return (
     <div className='flex flex-col gap-2'>
-      <div className='flex flex-row items-center gap-x-2'>
-        <label htmlFor='product_type'>Product Type</label>
-        <Select
-          options={["Black Cover", "Packing"]}
-          onChange={(e) =>
-            inwardEntryDataInputHandler("product_type", e.target.value)
-          }
-        />
-      </div>
-      <div className='flex flex-row items-center gap-x-2'>
-        <label htmlFor='from'>From</label>
-        <Select
-          options={["seller_one", "seller_two"]}
-          onChange={(e) => inwardEntryDataInputHandler("from", e.target.value)}
-        />
+      <div className='flex flex-col gap-4 w-full max-w-xs mx-auto mb-2'>
+        <div className='flex items-center justify-between'>
+          <label className='text-sm font-medium'>Category:</label>
+          <div className='w-40'>
+            <Select
+              options={["Option 1", "Option 2"]}
+              label='Category'
+              onChange={(e) =>
+                inwardEntryDataInputHandler("category", e.target.value)
+              }
+            />
+          </div>
+        </div>
+        <div className='flex items-center justify-between'>
+          <label className='text-sm font-medium'>Supplier:</label>
+          <div className='w-40'>
+            <Select
+              options={["Supplier 1", "Supplier 2"]}
+              label='Supplier'
+              onChange={(e) =>
+                inwardEntryDataInputHandler("supplier", e.target.value)
+              }
+            />
+          </div>
+        </div>
+        <div className='flex items-center justify-between'>
+          <label className='text-sm font-medium'>Challan No:</label>
+          <input
+            type='text'
+            className='border border-gray-400 rounded-lg px-4 py-2 text-sm w-40 text-gray-700'
+            onChange={(e) =>
+              inwardEntryDataInputHandler("challan_no", e.target.value)
+            }
+            placeholder=''
+          />
+        </div>
       </div>
       <ProductsList setInwardEntryData={setInwardEntryData} />
 
       <button
+        className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer'
         type='button'
         onClick={handlePost}>
-        Submit
-      </button>
-      <button
-        type='button'
-        onClick={deleteAllPosts}>
-        Delete
+        Add
       </button>
     </div>
   );

@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store/store";
 import { logout } from "../app/store/auth";
 import { usePathname, useRouter } from "next/navigation";
-import { setNavExpanded } from "@/app/store/ui";
+import { setNavExpanded, setCurrentTab } from "@/app/store/ui";
+import Image from "next/image";
 
 const navItems = [
   {
@@ -35,6 +36,9 @@ const navItems = [
   },
 ];
 
+const divClasses =
+  "flex items-center justify-start w-68 h-14 mb-4  rounded-2xl text-gray-900 text-lg transition-all duration-300 select-none pl-3";
+
 export default function Navbar() {
   const navExpanded = useSelector((state: RootState) => state.ui.navExpanded);
   const user = useSelector((state: RootState) => state.auth.user);
@@ -55,6 +59,18 @@ export default function Navbar() {
     }
   };
 
+  const setCurrentTabHandler = (tabName: string) => {
+    dispatch(setCurrentTab(tabName));
+  };
+
+  // Update tab when pathname changes
+  useEffect(() => {
+    const tab = navItems.find(tab => tab.path === pathname);
+    if (tab) {
+      dispatch(setCurrentTab(tab.name));
+    }
+  }, [pathname, dispatch]);
+
   useEffect(() => {
     if (pathname !== "/dashboard" && navExpanded) {
       dispatch(setNavExpanded(false));
@@ -62,48 +78,49 @@ export default function Navbar() {
   }, [pathname, navExpanded]);
 
   return (
-    <aside
-      className={`fixed top-0 mt-8 left-0 h-screen bg-blue-200 flex flex-col transition-all duration-200 shadow-md z-[100] ${
-        navExpanded ? "w-70 items-start" : "w-20 items-center"
-      }`}
-      style={{ paddingTop: 56 }}>
-      <div
-        className={`flex items-center ${
-          navExpanded ? "justify-start w-70 pl-6" : "justify-center w-20 "
-        } h-14 mb-4  rounded-2xl text-gray-900 text-lg transition-all duration-300 select-none`}>
-        <img
-          src='/user.svg'
-          alt='user'
-          className='w-12 h-12 rounded-2xl object-contain bg-[#008CFF]'
-        />
-        {navExpanded && (
-          <span className='ml-2 text-lg font-semibold whitespace-nowrap'>
-            {user?.name || "User"}
-          </span>
-        )}
-      </div>
-      {navItems.map((item) => (
-        <Link
-          key={item.name}
-          href={item.name !== "Log-out" ? item.path : "/"}
-          onClick={item.name === "Log-out" ? handleLogout : undefined}
-          className={`flex items-center ${
-            navExpanded ? "justify-start w-70 pl-6" : "justify-center w-20"
-          } h-14 mb-4 rounded-2xl text-gray-900 text-lg no-underline transition-all duration-200`}>
-          <img
-            src={item.icon}
-            alt={item.name}
-            className={`w-12 h-12 rounded-2xl object-contain ${
-              item.name === currentTab ? "bg-[#1447E6]" : "bg-[#008CFF]"
-            }`}
-          />
-          {navExpanded && (
-            <span className='ml-2 text-lg font-semibold whitespace-nowrap '>
-              {item.name}
+    <>
+      {navExpanded && (
+        <aside
+          className='fixed top-0 mt-8 left-0 h-screen bg-blue-100 flex flex-col transition-all duration-200 shadow-md z-[100] w-68 items-start'
+          style={{ paddingTop: 56 }}>
+          <div className={divClasses}>
+            <Image
+              src='/user.svg'
+              alt='user'
+              width={48}
+              height={48}
+              className='w-12 h-12 rounded-2xl object-contain bg-[#008CFF]'
+            />
+            <span className='ml-2 text-lg font-semibold whitespace-nowrap'>
+              {user?.name || "User"}
             </span>
-          )}
-        </Link>
-      ))}
-    </aside>
+          </div>
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.name !== "Log-out" ? item.path : "/"}
+              onClick={
+                item.name === "Log-out" 
+                  ? handleLogout 
+                  : () => setCurrentTabHandler(item.name)
+              }
+              className={divClasses}>
+              <Image
+                src={item.icon}
+                alt={item.name}
+                width={48}
+                height={48}
+                className={`w-12 h-12 rounded-2xl object-contain ${
+                  item.name === currentTab ? "bg-[#1447E6]" : "bg-[#008CFF]"
+                }`}
+              />
+              <span className='ml-2 text-lg font-semibold whitespace-nowrap '>
+                {item.name}
+              </span>
+            </Link>
+          ))}
+        </aside>
+      )}
+    </>
   );
 }

@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import Category from "@/components/settings/Category";
 import Users from "@/components/settings/Users";
+import { useGetProductsQuery } from "../store/products";
+import Loading from "@/components/Loading";
 
 type ContentType = "category" | "users" | null;
 
@@ -13,6 +15,9 @@ export default function Settings() {
   const user = useSelector((state: RootState) => state.auth.user);
   const isAdmin = user?.role === "admin";
 
+  // const settingsData = JSON.parse(JSON.stringify(products));
+  // delete settingsData._id;
+  // console.log("settingsData", settingsData);
   useEffect(() => {
     if (activeContent === "users" && !isAdmin) {
       setActiveContent("category");

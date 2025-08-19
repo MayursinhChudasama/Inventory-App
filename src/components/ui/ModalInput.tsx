@@ -6,11 +6,20 @@ const ModalInput: React.FC<{
   onSave: (key: string, value: string) => void;
   title: string;
   onClose: (value: boolean) => void;
-}> = ({ onSave, title, onClose }) => {
+  handleMutate?: () => void;
+  isUpdating?: boolean;
+}> = ({ onSave, title, onClose, handleMutate, isUpdating }) => {
   const [value, setValue] = useState<string>("");
-  function handleClick() {
+  async function handleClick() {
     onSave(title, value);
     onClose(false);
+    if (handleMutate) {
+      try {
+        await handleMutate();
+      } catch (error) {
+        console.error("Error in handleMutate:", error);
+      }
+    }
   }
 
   return (
@@ -24,8 +33,10 @@ const ModalInput: React.FC<{
       <button
         type='button'
         onClick={handleClick}
-        className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer'>
-        Save
+        className={`bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer ${
+          isUpdating ? "bg-blue-600" : ""
+        }`}>
+        {isUpdating ? "Saving..." : "Save"}
       </button>
     </div>
   );

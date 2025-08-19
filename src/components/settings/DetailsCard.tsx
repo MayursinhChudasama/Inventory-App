@@ -10,14 +10,17 @@ interface DetailsCardProps {
   modalContent?: React.ReactNode;
   modalTitle?: string;
   handleAdd: (key: string, value: string) => void;
+  handleMutate?: () => void;
+  isUpdating?: boolean;
 }
 
 const DetailsCard: React.FC<DetailsCardProps> = ({
   heading,
   children,
-  modalContent,
   modalTitle,
   handleAdd,
+  handleMutate,
+  isUpdating,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,6 +52,8 @@ const DetailsCard: React.FC<DetailsCardProps> = ({
             title={heading}
             onSave={handleAdd}
             onClose={setIsModalOpen}
+            handleMutate={handleMutate}
+            isUpdating={isUpdating}
           />
         </Modal>
       )}
