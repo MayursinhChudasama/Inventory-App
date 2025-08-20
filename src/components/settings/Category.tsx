@@ -1,10 +1,11 @@
 import Select from "@/components/InputForm/Select";
 import DetailsCard from "@/components/settings/DetailsCard";
 import { useEffect, useState } from "react";
-import ModalInput from "../ui/ModalInput";
+import Modal from "../ui/Modal";
 import {
   useGetProductsQuery,
-  usePutProductsMutation,
+  useAddProductMutation,
+  useDeleteProductMutation,
 } from "@/app/store/products";
 import Loading from "../Loading";
 
@@ -15,53 +16,40 @@ type BrandModels = {
 type SettingsData = {
   [category: string]: BrandModels;
 };
+//
 const Category: React.FC = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
-  console.log("productsOG", products);
+  const { data, isLoading, error } = useGetProductsQuery();
+  const products = data?.[0];
+  const [addProduct, { isLoading: isAddProductLoading }] =
+    useAddProductMutation();
+  const [deleteProduct, { isLoading: isDeleteProductLoading }] =
+    useDeleteProductMutation();
 
-  const [updateProduct, { isLoading: isUpdating }] = usePutProductsMutation();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleteItem, setDeleteItem] = useState<string>("");
 
-  console.log("productsID", products?.[0]._id);
-  const [settingsData, setSettingsData] = useState<SettingsData>({});
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedBrand, setSelectedBrand] = useState<string>("");
+  const allCategory =
+    Object.keys(products || {}).filter((key) => key !== "_id") || [];
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    allCategory[0]
+  );
 
-  console.log("settingsData", settingsData);
+  const allBrands = Object.keys(products?.[selectedCategory] || {}) || [];
+  const [selectedBrand, setSelectedBrand] = useState<string>(allBrands[0]);
 
-  // Update settings data when products load
-  useEffect(() => {
-    if (products?.[0]) {
-      const data = JSON.parse(JSON.stringify(products[0]));
-      delete data._id; // Remove MongoDB _id
-
-      // Only update if data has changed
-      setSettingsData((prevData) => {
-        if (JSON.stringify(prevData) !== JSON.stringify(data)) {
-          // Set first category and brand as default
-          const categories = Object.keys(data).filter((key) => key !== "_id");
-          if (categories.length > 0 && !selectedCategory) {
-            setSelectedCategory(categories[0]);
-            const brands = Object.keys(data[categories[0]] || {});
-            if (brands.length > 0 && !selectedBrand) {
-              setSelectedBrand(brands[0]);
-            }
-          }
-          return data;
-        }
-        return prevData;
-      });
-    }
-  }, [products, selectedCategory, selectedBrand]);
-
-  const allCategory = Object.keys(settingsData).filter((key) => key !== "_id");
-  const allBrands = Object.keys(settingsData[selectedCategory] || {});
   const allModels =
-    Object.values(settingsData[selectedCategory]?.[selectedBrand] || {}) || [];
+    Object.values(products?.[selectedCategory]?.[selectedBrand] || {}) || [];
+
+  //
+  useEffect(() => {
+    setSelectedCategory(allCategory[0]);
+  }, [products]);
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    // const products = data[0];
     const newCategory = e.target.value;
     setSelectedCategory(newCategory);
-    const newBrands = Object.keys(settingsData[newCategory] || {});
+    const newBrands = Object.keys(products[newCategory] || {});
     setSelectedBrand(newBrands[0]);
   };
 
@@ -71,88 +59,78 @@ const Category: React.FC = () => {
     }
   }, [allBrands, selectedBrand]);
 
-  // Removed duplicate useEffect that was causing errors
-
-  async function handleAdd(key: string, value: string) {
-    return new Promise<void>((resolve) => {
-      setSettingsData((prev) => {
-        let newState;
-        switch (key) {
-          case "CATEGORY":
-            newState = {
-              ...prev,
-              [value]: {},
-            };
-            break;
-          case "BRANDS":
-            newState = {
-              ...prev,
-              [selectedCategory]: {
-                ...prev[selectedCategory],
-                [value]: [],
-              },
-            };
-            break;
-          case "MODELS":
-            newState = {
-              ...prev,
-              [selectedCategory]: {
-                ...prev[selectedCategory],
-                [selectedBrand]: [
-                  ...prev[selectedCategory][selectedBrand],
-                  value,
-                ],
-              },
-            };
-            break;
-          default:
-            newState = prev;
-        }
-        // Resolve the promise after the state has been updated
-        setTimeout(() => resolve(), 10);
-        return newState;
-      });
-    });
-  }
-
-  const handleMutate = async () => {
-    console.log("settingsData", settingsData);
-
+  const handleAddModel = async (type: string, value: string) => {
     try {
-      if (!products?.[0]?._id) {
+      if (!data?.[0]?._id) {
         throw new Error("No product ID available");
       }
+      const productId = data[0]._id;
+      let payload = {};
+      if (type == "MODELS") {
+        payload = {
+          type: "addModel",
+          body: { [selectedCategory + "." + selectedBrand]: value },
+        };
+      } else if (type == "BRANDS") {
+        payload = {
+          type: "addBrand",
+          body: { [selectedCategory + "." + value]: [] },
+        };
+      }
+      console.log("payload", payload);
 
-      const productId = products[0]._id;
-      const updatedData = { ...settingsData };
-      // console.log("Updating product with ID:", productId);
-      // console.log("Sending data:", JSON.stringify(settingsData, null, 2));
-
-      const result = await updateProduct({
+      const result = await addProduct({
         id: productId,
-        body: updatedData,
+        body: payload,
       }).unwrap();
-
-      console.log("Update successful:", result);
-
-      // Invalidate the products query to refetch the latest data
-      // queryClient.invalidateQueries("products");
-
       return result;
     } catch (error) {
       console.error("Failed to update product:", error);
       throw error;
     }
   };
+
+  const handleDeleteModel = async (type: string, value: string) => {
+    try {
+      if (!data?.[0]?._id) {
+        throw new Error("No product ID available");
+      }
+      const productId = data[0]._id;
+      let payload = {};
+      if (type == "MODELS") {
+        payload = {
+          type: "deleteModel",
+          body: { [selectedCategory + "." + selectedBrand]: value },
+        };
+      } else if (type == "BRANDS") {
+        payload = {
+          type: "deleteBrand",
+          body: { [selectedCategory + "." + "value"]: "" },
+        };
+      }
+      console.log("payload", payload);
+
+      const result = await deleteProduct({
+        id: productId,
+        body: payload,
+      }).unwrap();
+      setShowDeleteConfirm(false);
+      return result;
+    } catch (error) {
+      console.error("Failed to update product:", error);
+      throw error;
+    }
+  };
+
+  //
   if (isLoading) return <Loading />;
+  // return <h1>SettingsPage</h1>;
   return (
     <div className='min-h-screen bg-gray-50 p-5 overflow-hidden'>
       <DetailsCard
         key='CATEGORY'
         heading='CATEGORY'
-        modalTitle='Add New Category'
-        handleAdd={handleAdd}
-        handleMutate={handleMutate}>
+        modalTitle='Add New Category'>
         {
           <ol className='space-y-2'>
             {allCategory?.map(
@@ -160,8 +138,8 @@ const Category: React.FC = () => {
                 item !== "_id" && (
                   <li
                     key={`${item}-${index}`}
-                    className='px-3 py-2 bg-gray-50 rounded text-gray-800 text-sm truncate '>
-                    {item.toUpperCase()}
+                    className='px-3 py-2  rounded text-gray-800 text-sm truncate '>
+                    {`${index + 1}. ${item.toUpperCase()}`}
                   </li>
                 )
             )}
@@ -174,14 +152,15 @@ const Category: React.FC = () => {
         key='BRANDS'
         heading='BRANDS'
         modalTitle='Add New Brand'
-        handleAdd={handleAdd}
-        handleMutate={handleMutate}>
-        <div className='flex justify-center pt-2 w-full px-4'>
+        // handleAdd={handleAdd}
+        handleAddModel={handleAddModel}>
+        <div className='flex text-center justify-center pt-2 w-full px-4'>
           <div className='w-full max-w-md'>
             <Select
-              defValue={selectedCategory || ""}
+              defaultValue={selectedCategory}
               options={allCategory}
               onChange={handleCategoryChange}
+              label='Brands'
             />
           </div>
         </div>
@@ -190,11 +169,23 @@ const Category: React.FC = () => {
             <ol className='space-y-2 '>
               {allBrands.length > 0 ? (
                 allBrands?.map((item, index) => (
-                  <li
+                  <div
                     key={`${item}-${index}`}
-                    className='px-3 py-2 bg-gray-50 rounded text-gray-800 text-sm truncate '>
-                    {`${index + 1}. ${item}`}
-                  </li>
+                    className='flex items-center justify-between'>
+                    <li
+                      key={`${item}-${index}`}
+                      className='px-3 py-2 rounded text-gray-800 text-sm truncate '>
+                      {`${index + 1}. ${item}`}
+                    </li>
+                    <button
+                      onClick={() => {
+                        setDeleteItem(item);
+                        setShowDeleteConfirm(true);
+                      }}
+                      className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
+                      Delete
+                    </button>
+                  </div>
                 ))
               ) : (
                 <li>
@@ -212,15 +203,16 @@ const Category: React.FC = () => {
         key='MODELS'
         heading='MODELS'
         modalTitle='Add New Model'
-        handleAdd={handleAdd}
-        handleMutate={handleMutate}
-        isUpdating={isUpdating}>
-        <div className='flex justify-center pt-2 w-full px-4'>
+        // handleAdd={handleAdd}
+        handleAddModel={handleAddModel}
+        isUpdating={isAddProductLoading}>
+        <div className='flex text-center justify-center pt-2 w-full px-4'>
           <div className='w-full max-w-md'>
             <Select
-              defValue={selectedBrand || ""}
+              defaultValue={selectedBrand}
               options={allBrands}
               onChange={(e) => setSelectedBrand(e.target.value)}
+              label='Models'
             />
           </div>
         </div>
@@ -229,11 +221,23 @@ const Category: React.FC = () => {
             <ol className='space-y-2'>
               {allModels.length > 0 ? (
                 allModels?.map((item, index) => (
-                  <li
+                  <div
                     key={`${item}-${index}`}
-                    className='px-3 py-2 bg-gray-50 rounded text-gray-800 text-sm truncate'>
-                    {`${index + 1}. ${item}`}
-                  </li>
+                    className='flex items-center justify-between'>
+                    <li className='px-3 py-2  rounded text-gray-800 text-sm truncate'>
+                      {`${index + 1}. ${item}`}
+                    </li>
+                    <div className='flex gap-2'>
+                      <button
+                        onClick={() => {
+                          setDeleteItem(item);
+                          setShowDeleteConfirm(true);
+                        }}
+                        className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
+                        Delete
+                      </button>
+                    </div>
+                  </div>
                 ))
               ) : (
                 <li>
@@ -246,6 +250,28 @@ const Category: React.FC = () => {
           }
         </div>
       </DetailsCard>
+      {/* Delete Confirmation Modal */}
+      <Modal
+        isOpen={showDeleteConfirm}
+        onClose={() => setShowDeleteConfirm(false)}
+        title='Confirm Deletion'>
+        <div className='space-y-4'>
+          <p>Are you sure you want to delete {selectedCategory}?</p>
+          <div className='flex justify-end space-x-2 mt-4'>
+            <button
+              onClick={() => setShowDeleteConfirm(false)}
+              className='px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'>
+              Cancel
+            </button>
+            <button
+              onClick={() => handleDeleteModel("MODELS", deleteItem)}
+              disabled={isDeleteProductLoading}
+              className='px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'>
+              {isDeleteProductLoading ? "Deleting..." : "Confirm Delete"}
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

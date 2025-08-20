@@ -7,6 +7,7 @@ import InputForm from "@/components/InputForm/InputForm";
 export default function Add() {
   const [activeChallanTab, setActiveChallanTab] =
     useState<ChallanType>("inward");
+
   return (
     <div
       className='flex flex-col items-center justify-start w-full min-h-screen  p-4 sm:p-6 md:p-8 max-w-md mx-auto'
@@ -16,7 +17,10 @@ export default function Add() {
         activeChallanTab={activeChallanTab}
         setActiveChallanTab={setActiveChallanTab}
       />
-      <InputForm />
+      <InputForm
+        key={activeChallanTab}
+        activeChallanTab={activeChallanTab}
+      />
     </div>
   );
 }

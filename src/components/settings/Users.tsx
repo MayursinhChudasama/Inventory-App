@@ -9,10 +9,10 @@ import {
   useDeleteUserMutation,
   useUpdateUserMutation,
 } from "@/app/store/users";
+import Loading from "../Loading";
 
 const Users: React.FC = () => {
   const { data: users, isLoading, error } = useGetUsersQuery();
-  console.log("users", users);
 
   const [createUser, { isLoading: isCreateUserLoading }] =
     useCreateUserMutation();
@@ -27,14 +27,17 @@ const Users: React.FC = () => {
   });
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const handleCreateUser = async (e: React.FormEvent, formData: CreateUser | UpdateUser) => {
+  const handleCreateUser = async (
+    e: React.FormEvent,
+    formData: CreateUser | UpdateUser
+  ) => {
     e.preventDefault();
     try {
       // Ensure we're passing a valid CreateUser object
       const createData: CreateUser = {
-        name: formData.name || '',
-        username: formData.username || '',
-        password: 'password' in formData ? formData.password : ''
+        name: formData.name || "",
+        username: formData.username || "",
+        password: "password" in formData ? formData.password : "",
       };
       await createUser(createData);
       setIsAddModalOpen(false);
@@ -63,7 +66,7 @@ const Users: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div className='flex justify-center p-8'>Loading users...</div>;
+    return <Loading />;
   }
 
   return (

@@ -4,16 +4,20 @@ import Select from "./Select";
 import { inwardEntry } from "@/models/models";
 import ProductsList from "./ProductsList";
 import postInwardEntry from "@/apiCalls/postInwardEntry";
+import { useSelector } from "react-redux";
 
-const InputForm: React.FC = () => {
-  const [inwardEntryData, setInwardEntryData] = useState<inwardEntry>({
-    from: "",
-    product_type: "",
-    products: [],
+const InputForm: React.FC<{ activeChallanTab: string }> = ({
+  activeChallanTab,
+}) => {
+  const user = useSelector((state: any) => state.auth.user);
+  const [entryData, setEntryData] = useState<inwardEntry>({
+    type: activeChallanTab,
+    challan_no: "",
+    category: "",
+    user: user.name,
     createdAt: "",
-    by_user: "user1",
+    products: [],
   });
-  console.log("inwardEntryData", inwardEntryData);
 
   const inwardEntryDataInputHandler = (
     key?: string,
@@ -22,20 +26,16 @@ const InputForm: React.FC = () => {
     productKey?: string
   ) => {
     if (!key) return;
-    setInwardEntryData((prev: any) => ({
+    setEntryData((prev: any) => ({
       ...prev,
       [key]: value,
       createdAt: Date.now(),
     }));
   };
 
-  async function handlePost() {
-    for (let i = 0; i < 1; i++) {
-      console.log("calling handlePost", i);
-      await postInwardEntry(inwardEntryData);
-    }
+  async function handleAddEntryData() {
+    console.log("entryData", entryData);
   }
-  async function deleteAllPosts() {}
 
   return (
     <div className='flex flex-col gap-2'>
@@ -49,6 +49,7 @@ const InputForm: React.FC = () => {
               onChange={(e) =>
                 inwardEntryDataInputHandler("category", e.target.value)
               }
+              className='w-full py-2'
             />
           </div>
         </div>
@@ -61,6 +62,7 @@ const InputForm: React.FC = () => {
               onChange={(e) =>
                 inwardEntryDataInputHandler("supplier", e.target.value)
               }
+              className='w-full py-2'
             />
           </div>
         </div>
@@ -72,16 +74,16 @@ const InputForm: React.FC = () => {
             onChange={(e) =>
               inwardEntryDataInputHandler("challan_no", e.target.value)
             }
-            placeholder=''
+            defaultValue={""}
           />
         </div>
       </div>
-      <ProductsList setInwardEntryData={setInwardEntryData} />
+      <ProductsList setEntryData={setEntryData} />
 
       <button
         className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer'
         type='button'
-        onClick={handlePost}>
+        onClick={handleAddEntryData}>
         Add
       </button>
     </div>

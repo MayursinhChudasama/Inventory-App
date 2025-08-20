@@ -20,7 +20,7 @@ const navItems = [
     icon: "/search.svg",
   },
   {
-    name: "Challan Register",
+    name: "Challan Book",
     path: "/register",
     icon: "/register.svg",
   },
@@ -65,7 +65,7 @@ export default function Navbar() {
 
   // Update tab when pathname changes
   useEffect(() => {
-    const tab = navItems.find(tab => tab.path === pathname);
+    const tab = navItems.find((tab) => tab.path === pathname);
     if (tab) {
       dispatch(setCurrentTab(tab.name));
     }
@@ -100,8 +100,8 @@ export default function Navbar() {
               key={item.name}
               href={item.name !== "Log-out" ? item.path : "/"}
               onClick={
-                item.name === "Log-out" 
-                  ? handleLogout 
+                item.name === "Log-out"
+                  ? handleLogout
                   : () => setCurrentTabHandler(item.name)
               }
               className={divClasses}>

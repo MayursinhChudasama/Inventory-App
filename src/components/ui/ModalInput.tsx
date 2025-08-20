@@ -3,21 +3,22 @@
 import { useState } from "react";
 
 const ModalInput: React.FC<{
-  onSave: (key: string, value: string) => void;
   title: string;
   onClose: (value: boolean) => void;
-  handleMutate?: () => void;
+  handleAddModel?: (type: string, value: string) => void;
   isUpdating?: boolean;
-}> = ({ onSave, title, onClose, handleMutate, isUpdating }) => {
+}> = ({ title, onClose, handleAddModel, isUpdating }) => {
+  //
   const [value, setValue] = useState<string>("");
-  async function handleClick() {
-    onSave(title, value);
+  //
+  async function handleClick(value: string) {
+    // onSave(title, value);
     onClose(false);
-    if (handleMutate) {
+    if (handleAddModel) {
       try {
-        await handleMutate();
+        await handleAddModel(title, value);
       } catch (error) {
-        console.error("Error in handleMutate:", error);
+        console.error("Error in addModel:", error);
       }
     }
   }
@@ -32,7 +33,9 @@ const ModalInput: React.FC<{
       />
       <button
         type='button'
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(value);
+        }}
         className={`bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer ${
           isUpdating ? "bg-blue-600" : ""
         }`}>

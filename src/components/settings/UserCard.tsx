@@ -21,13 +21,16 @@ const UserCard: React.FC<UserCardProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent, formData: { name?: string; username?: string; password?: string }) => {
+  const handleSubmit = async (
+    e: React.FormEvent,
+    formData: { name?: string; username?: string; password?: string }
+  ) => {
     e.preventDefault();
     const updatedUserData: UpdateUser = {
       name: formData.name,
       username: formData.username,
     };
-    
+
     if (formData.password) {
       updatedUserData.passwordHash = formData.password;
     }
@@ -96,7 +99,7 @@ const UserCard: React.FC<UserCardProps> = ({
           initialData={{
             name: user.name,
             username: user.username,
-            password: '',
+            password: "",
           }}
           onSubmit={handleSubmit}
           isLoading={isUpdateUserLoading}
@@ -123,7 +126,7 @@ const UserCard: React.FC<UserCardProps> = ({
               onClick={() => handleDelete()}
               disabled={isDeleteUserLoading}
               className='px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'>
-              {isDeleteUserLoading ? 'Deleting...' : 'Confirm Delete'}
+              {isDeleteUserLoading ? "Deleting..." : "Confirm Delete"}
             </button>
           </div>
         </div>

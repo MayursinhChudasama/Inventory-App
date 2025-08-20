@@ -4,12 +4,12 @@ export interface singleProduct {
   qty: number;
 }
 export interface inwardEntry {
-  from: string;
-  product_type: string;
+  type: string;
+  challan_no: string;
+  category: string;
+  user: string;
   products: singleProduct[];
-
   createdAt: string;
-  by_user: string;
 }
 
 export interface User {

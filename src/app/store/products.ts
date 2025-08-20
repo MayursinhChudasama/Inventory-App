@@ -9,26 +9,39 @@ const products = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query<any, void>({
       query: () => "/",
-      providesTags: (result = []) => [
-        { type: "Product" as const, id: "LIST" },
-        ...result.map((product: any) => ({
-          type: "Product" as const,
-          id: product._id,
-        })),
-      ],
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ _id }: { _id: string }) => ({
+                type: "Product" as const,
+                id: _id,
+              })),
+              { type: "Product", id: "LIST" },
+            ]
+          : [{ type: "Product", id: "LIST" }],
     }),
-    putProducts: builder.mutation<any, { id: string; body: any }>({
+    addProduct: builder.mutation<any, { id: string; body: any }>({
       query: ({ id, body }) => ({
         url: `/${id}`,
         method: "PUT",
         body,
       }),
-      invalidatesTags: (result, error, { id }) => [
-        { type: "Product" as const, id },
-      ],
+      invalidatesTags: [{ type: "Product", id: "LIST" }],
+    }),
+    deleteProduct: builder.mutation<any, { id: string; body: any }>({
+      query: ({ id, body }) => ({
+        url: `/${id}`,
+        method: "DELETE",
+        body,
+      }),
+      invalidatesTags: [{ type: "Product", id: "LIST" }],
     }),
   }),
 });
 
-export const { useGetProductsQuery, usePutProductsMutation } = products;
+export const {
+  useGetProductsQuery,
+  useAddProductMutation,
+  useDeleteProductMutation,
+} = products;
 export default products;

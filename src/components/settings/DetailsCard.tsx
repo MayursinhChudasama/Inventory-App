@@ -9,8 +9,7 @@ interface DetailsCardProps {
   children: React.ReactNode;
   modalContent?: React.ReactNode;
   modalTitle?: string;
-  handleAdd: (key: string, value: string) => void;
-  handleMutate?: () => void;
+  handleAddModel?: (type: string, value: string) => void;
   isUpdating?: boolean;
 }
 
@@ -18,8 +17,7 @@ const DetailsCard: React.FC<DetailsCardProps> = ({
   heading,
   children,
   modalTitle,
-  handleAdd,
-  handleMutate,
+  handleAddModel,
   isUpdating,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,14 +28,14 @@ const DetailsCard: React.FC<DetailsCardProps> = ({
         <div className='bg-blue-500 px-4 py-2'>
           <h2 className='text-base font-medium text-white truncate flex items-center justify-between'>
             {heading.toUpperCase()}
-            {
+            {heading !== "CATEGORY" && (
               <button
                 onClick={() => setIsModalOpen(true)}
                 className='flex items-center justify-center bg-white text-blue-500 hover:bg-blue-50 cursor-pointer text-2xl rounded-full w-7 h-7 p-0 transition-colors'
                 aria-label={`Open ${heading} modal`}>
                 <span className='-mt-0.5'>+</span>
               </button>
-            }
+            )}
           </h2>
         </div>
         {children}
@@ -50,9 +48,8 @@ const DetailsCard: React.FC<DetailsCardProps> = ({
           title={modalTitle || heading}>
           <ModalInput
             title={heading}
-            onSave={handleAdd}
             onClose={setIsModalOpen}
-            handleMutate={handleMutate}
+            handleAddModel={handleAddModel}
             isUpdating={isUpdating}
           />
         </Modal>

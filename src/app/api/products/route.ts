@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { ObjectId } from "mongodb";
 
-const JWT_SECRET = process.env.JWT_SECRET || "changeme";
+// const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 const client = await clientPromise;
 const db = client.db(process.env.MONGODB_DB);
 
