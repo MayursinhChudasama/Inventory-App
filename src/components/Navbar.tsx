@@ -21,7 +21,7 @@ const navItems = [
   },
   {
     name: "Challan Book",
-    path: "/register",
+    path: "/challanbook",
     icon: "/register.svg",
   },
   {

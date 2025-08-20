@@ -7,15 +7,17 @@ const thClasses =
   "py-2 px-2 text-center text-sm font-medium text-gray-700 whitespace-nowrap";
 
 const ProductsList: React.FC<{
+  allBrands: string[];
+  products: any;
   setEntryData: React.Dispatch<React.SetStateAction<inwardEntry>>;
-}> = ({ setEntryData }) => {
+}> = ({ setEntryData, allBrands, products }) => {
   const [items, setItems] = useState(
     Array.from({ length: 10 }, (_, i) => ({
       id: Date.now() + i + Math.random(),
     }))
   );
   const [productList, setProductList] = useState<singleProduct[]>([]);
-  const totalQty = productList.reduce((acc, item) => acc + item.qty, 0);
+  const totalQty = productList.reduce((acc, item) => acc + item?.qty || 0, 0);
 
   //
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -38,6 +40,7 @@ const ProductsList: React.FC<{
     key: string
   ) => {
     let value: string | number = e.target.value;
+
     if (key === "qty") {
       value = Number(value);
     }
@@ -82,8 +85,8 @@ const ProductsList: React.FC<{
                 i={i}
                 handleRemove={handleRemove}
                 handleChange={handleChange}
-                brandOptions={["Google", "Apple", "Samsung"]}
-                modelOptions={["Pixel 6", "iPhone 12", "Galaxy S21"]}
+                brandOptions={allBrands}
+                products={products}
               />
             ))}
           </tbody>

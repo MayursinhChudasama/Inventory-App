@@ -25,7 +25,7 @@ const Select: React.FC<SelectProps> = ({
       {!defaultValue && (
         <option
           value={defaultValue || "Default"}
-          disabled>
+          disabled={defaultValue ? true : false}>
           {label || defaultValue}
         </option>
       )}

@@ -19,7 +19,7 @@ export default function RegisterPage() {
   // filter purpose
   const [filteredEntries, setFilteredEntries] = useState<RegisterEntry[]>([]);
   const [filters, setFilters] = useState<RegisterFilters>({});
-  console.log("filters", filters);
+  // console.log("filters", filters);
 
   //filter options variables
   const USERS = [

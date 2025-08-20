@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Select from "./Select";
 
 const tdClasses = "py-1 px-1 text-sm text-gray-700 align-middle";
@@ -5,6 +6,7 @@ const tdClasses = "py-1 px-1 text-sm text-gray-700 align-middle";
 export default function SingleItem({
   id,
   i,
+  products,
   handleRemove,
   handleChange,
   brandOptions,
@@ -12,6 +14,7 @@ export default function SingleItem({
 }: {
   id: number;
   i: number;
+  products: any;
   handleRemove: (id: number, i: number) => void;
   handleChange: (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
@@ -19,9 +22,13 @@ export default function SingleItem({
     key: string
   ) => void;
   brandOptions: string[];
-  modelOptions: string[];
+  modelOptions?: string[];
 }) {
   const srNO = i + 1;
+
+  const [selectedBrand, setSelectedBrand] = useState<string>("");
+  const allModels: string[] =
+    Object.values(products?.["Black Cover"]?.[selectedBrand] || {}) || [];
 
   return (
     <tr className='hover:bg-gray-50'>
@@ -32,7 +39,10 @@ export default function SingleItem({
         <div className=''>
           <Select
             options={brandOptions}
-            handleChange={(e) => handleChange(e, i, "brand")}
+            handleChange={(e) => {
+              handleChange(e, i, "brand");
+              setSelectedBrand(e.target.value);
+            }}
             className=' text-sm py-1.5'
             label='Brand'
             productKey={true}
@@ -42,7 +52,7 @@ export default function SingleItem({
       <td className={tdClasses}>
         <div className=''>
           <Select
-            options={modelOptions}
+            options={allModels || []}
             handleChange={(e) => handleChange(e, i, "model")}
             className=' text-sm py-1.5'
             label='Model'
