@@ -1,49 +1,65 @@
 "use client";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { useGetChallansQuery } from "../store/challan";
+import getCurrentStock from "@/lib/currentStock";
+import Link from "next/link";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentTab } from "../store/ui";
+
+const thClasses =
+  "px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider";
+const tdClasses =
+  "px-2 py-3 whitespace-nowrap text-center text-sm text-gray-900";
 
 export default function DashboardPage() {
   const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch();
+  const currentTab = useSelector((state: RootState) => state.ui.currentTab);
+  const { data: ALL_CHALLANS } = useGetChallansQuery();
+
+  const { CURRENT_STOCK_CHALLANS } = getCurrentStock(ALL_CHALLANS);
+  // console.log("CURRENT_STOCK_CHALLANS", CURRENT_STOCK_CHALLANS);
+
+  useEffect(() => {
+    if (currentTab !== "Stock Dashboard") {
+      dispatch(setCurrentTab("Stock Dashboard"));
+    }
+  }, [currentTab]);
 
   return (
-    <div className='min-h-screen bg-gray-100 p-5'>
-      <div className='max-w-4xl mx-auto'>
-        <div className='bg-white rounded-lg shadow-md p-6'>
-          <h1 className='text-3xl font-bold text-gray-900 mb-4'>
-            Welcome, {user?.name}!
-          </h1>
-          <p className='text-gray-600 mb-6'>
-            This is your dashboard. You can navigate using the sidebar menu.
-          </p>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            <div className='bg-blue-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-blue-900 mb-2'>
-                Add New Challan
-              </h3>
-              <p className='text-blue-700 text-sm'>
-                Create new inventory entries
-              </p>
-            </div>
-
-            <div className='bg-green-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-green-900 mb-2'>Search</h3>
-              <p className='text-green-700 text-sm'>
-                Search through your inventory
-              </p>
-            </div>
-
-            <div className='bg-purple-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-purple-900 mb-2'>
-                Challan Register
-              </h3>
-              <p className='text-purple-700 text-sm'>
-                View all challan records
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className='overflow-x-auto bg-white rounded-lg shadow'>
+      <table className='min-w-full divide-y divide-gray-200'>
+        <thead className='bg-gray-100'>
+          <tr>
+            <th className={thClasses}>No</th>
+            <th className={thClasses}>Category</th>
+            <th className={thClasses}>Brand</th>
+            <th className={thClasses}>Model</th>
+            <th className={thClasses}>Qty</th>
+            <th className={thClasses}></th>
+          </tr>
+        </thead>
+        <tbody className='bg-white divide-y divide-gray-200'>
+          {CURRENT_STOCK_CHALLANS?.map((entry: any, i: number) => (
+            <tr
+              key={`${entry.category}-${entry.brand}-${entry.model}`}
+              className='hover:bg-gray-50 cursor-pointer'>
+              <td className={tdClasses}>
+                {i + 1 < 10 ? "0" + (i + 1) : i + 1}
+              </td>
+              <td className={tdClasses}>{entry.category}</td>
+              <td className={tdClasses}>{entry.brand}</td>
+              <td className={tdClasses}>{entry.model}</td>
+              <td className={tdClasses}>{entry.qty}</td>
+              <td className={tdClasses}>
+                <Link href={`/dashboard/${entry.model}`}>View</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

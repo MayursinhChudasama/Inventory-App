@@ -15,11 +15,6 @@ const navItems = [
     icon: "/add.svg",
   },
   {
-    name: "Search",
-    path: "/search",
-    icon: "/search.svg",
-  },
-  {
     name: "Challan Book",
     path: "/challanbook",
     icon: "/register.svg",
