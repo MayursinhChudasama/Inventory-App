@@ -6,13 +6,13 @@ const challan = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "/api/challan/",
   }),
-  tagTypes: ['Challan'],
+  tagTypes: ["Challan"],
   endpoints: (builder) => ({
     getChallans: builder.query<inwardEntry[], void>({
       query: () => "/",
       providesTags: (result = []) => [
-        'Challan',
-        ...result.map(({ _id }) => ({ type: 'Challan' as const, id: _id })),
+        "Challan",
+        ...result.map(({ _id }) => ({ type: "Challan" as const, id: _id })),
       ],
     }),
     addChallan: builder.mutation<inwardEntry, { body: inwardEntry }>({
@@ -21,10 +21,33 @@ const challan = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ['Challan'],
+      invalidatesTags: ["Challan"],
+    }),
+    updateChallan: builder.mutation<
+      inwardEntry,
+      { id: string; body: inwardEntry }
+    >({
+      query: ({ id, body }) => ({
+        url: `/${id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["Challan"],
+    }),
+    deleteChallan: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Challan"],
     }),
   }),
 });
 
-export const { useGetChallansQuery, useAddChallanMutation } = challan;
+export const {
+  useGetChallansQuery,
+  useAddChallanMutation,
+  useUpdateChallanMutation,
+  useDeleteChallanMutation,
+} = challan;
 export default challan;

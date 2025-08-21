@@ -1,84 +1,93 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { RegisterFilter } from "@/components/register/RegisterFilter";
-import { RegisterTable } from "@/components/register/RegisterTable";
+import { RegisterFilter } from "@/components/challanbook/RegisterFilter";
+import { RegisterTable } from "@/components/challanbook/RegisterTable";
 import { RegisterEntry, RegisterFilters, ChallanType } from "@/models/register";
-import { ChallanTypeButtons } from "@/components/register/ChallanTypeButtons";
+import { ChallanTypeButtons } from "@/components/challanbook/ChallanTypeButtons";
 import Modal from "@/components/ui/Modal";
 import Loading from "@/components/Loading";
+import { useGetChallansQuery } from "../store/challan";
+import { inwardEntry } from "@/models/models";
 
 export default function RegisterPage() {
   //rtk query will replace these two
-  const [entries, setEntries] = useState<RegisterEntry[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [entries, setEntries] = useState<RegisterEntry[]>([]);
+  const { data: challans, isLoading } = useGetChallansQuery();
+  // const [isLoading, setIsLoading] = useState(true);
   // ui
   const [showFilters, setShowFilters] = useState(false);
   const [activeChallanTab, setActiveChallanTab] =
     useState<ChallanType>("inward");
   // filter purpose
-  const [filteredEntries, setFilteredEntries] = useState<RegisterEntry[]>([]);
+  const [filteredChallans, setFilteredChallans] = useState<inwardEntry[]>([]);
   const [filters, setFilters] = useState<RegisterFilters>({});
   // console.log("filters", filters);
 
   //filter options variables
   const USERS = [
     ...new Set(
-      entries
-        .filter((entry) => entry.type === activeChallanTab)
-        .map((entry) => entry.user)
+      challans
+        ?.filter((challan) => challan.type === activeChallanTab)
+        .map((challan) => challan.user)
     ),
   ];
   const CATEGORY = [
     ...new Set(
-      entries
-        .filter((entry) => entry.type === activeChallanTab)
-        .map((entry) => entry.category)
+      challans
+        ?.filter((challan) => challan.type === activeChallanTab)
+        .map((challan) => challan.category)
     ),
   ];
 
-  // Load data //after rtk query remove
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/register-entries");
-        const data = await response.json();
-        setEntries(data);
-      } catch (error) {
-        console.error("Error fetching register entries:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const SOURCES = [
+    ...new Set(
+      challans
+        ?.filter((challan) => challan.type === activeChallanTab)
+        .map((challan) => challan.source)
+    ),
+  ];
 
-    fetchData();
-  }, []);
-
-  // Apply filters whenever entries, activeTab, or filters change
   useEffect(() => {
     const applyFilters = () => {
-      if (!entries.length) return;
+      if (!challans?.length) return;
 
-      let result = [...entries];
+      let result = [...challans];
 
       // Filter by active tab
-      result = result.filter((entry) => entry.type === activeChallanTab);
+      result = result.filter((challan) => challan.type === activeChallanTab);
 
       // Apply other filters
       if (filters.user) {
         if (filters.user === "all") {
-          result = result.filter((entry) => entry.type === activeChallanTab);
+          result = result.filter(
+            (challan) => challan.type === activeChallanTab
+          );
         } else {
-          result = result.filter((entry) => entry.user === filters.user);
+          result = result.filter((challan) => challan.user === filters.user);
         }
       }
 
       if (filters.category) {
         if (filters.category === "all") {
-          result = [...entries];
+          result = result.filter(
+            (challan) => challan.type === activeChallanTab
+          );
         } else {
           result = result.filter(
-            (entry) => entry.category === filters.category
+            (challan) => challan.category === filters.category
+          );
+        }
+      }
+
+      if (filters.source) {
+        if (filters.source === "all") {
+          result = result.filter(
+            (challan) => challan.type === activeChallanTab
+          );
+        } else {
+          result = result.filter(
+            (challan) => challan.source === filters.source
           );
         }
       }
@@ -87,17 +96,17 @@ export default function RegisterPage() {
         const startDate = new Date(filters.startDate as string);
         const endDate = new Date(filters.endDate as string);
 
-        result = result.filter((entry) => {
-          const entryDate = new Date(entry.createdAt);
+        result = result.filter((challan) => {
+          const entryDate = new Date(challan.createdAt);
           return entryDate >= startDate && entryDate <= endDate;
         });
       }
 
-      setFilteredEntries(result);
+      setFilteredChallans(result);
     };
 
     applyFilters();
-  }, [entries, activeChallanTab, filters]);
+  }, [challans, activeChallanTab, filters]);
 
   const handleFilterChange = useCallback((newFilters: RegisterFilters) => {
     setFilters((prevFilters) => ({
@@ -106,8 +115,8 @@ export default function RegisterPage() {
     }));
   }, []);
 
-  const handleRowClick = useCallback((entry: RegisterEntry) => {
-    console.log("Row clicked:", entry);
+  const handleRowClick = useCallback((challan: RegisterEntry) => {
+    console.log("Row clicked:", challan);
   }, []);
 
   const handleClearFilters = () => {
@@ -162,6 +171,7 @@ export default function RegisterPage() {
           onFilterChange={handleFilterChange}
           users={USERS}
           categories={CATEGORY}
+          sources={SOURCES}
           initialFilters={filters}
           setShowFilters={setShowFilters}
         />
@@ -169,8 +179,7 @@ export default function RegisterPage() {
 
       <div className='bg-white rounded-lg shadow overflow-hidden'>
         <RegisterTable
-          entries={filteredEntries}
-          onRowClick={handleRowClick}
+          entries={filteredChallans}
           isLoading={isLoading}
         />
       </div>

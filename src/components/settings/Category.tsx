@@ -6,7 +6,7 @@ import {
   useGetProductsQuery,
   useAddProductMutation,
   useDeleteProductMutation,
-} from "@/app/store/products";
+} from "@/app/store/productsApi";
 import Loading from "../Loading";
 
 type BrandModels = {
@@ -130,6 +130,7 @@ const Category: React.FC = () => {
       <DetailsCard
         key='CATEGORY'
         heading='CATEGORY'
+        dontShowAddButton
         modalTitle='Add New Category'>
         {
           <ol className='space-y-2'>
@@ -153,7 +154,8 @@ const Category: React.FC = () => {
         heading='BRANDS'
         modalTitle='Add New Brand'
         // handleAdd={handleAdd}
-        handleAddModel={handleAddModel}>
+        handleAddModel={handleAddModel}
+        dontShowAddButton={selectedCategory == "Sources" ? true : false}>
         <div className='flex text-center justify-center pt-2 w-full px-4'>
           <div className='w-full max-w-md'>
             <Select
@@ -177,14 +179,16 @@ const Category: React.FC = () => {
                       className='px-3 py-2 rounded text-gray-800 text-sm truncate '>
                       {`${index + 1}. ${item}`}
                     </li>
-                    <button
-                      onClick={() => {
-                        setDeleteItem(item);
-                        setShowDeleteConfirm(true);
-                      }}
-                      className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
-                      Delete
-                    </button>
+                    {selectedCategory !== "Sources" && (
+                      <button
+                        onClick={() => {
+                          setDeleteItem(item);
+                          setShowDeleteConfirm(true);
+                        }}
+                        className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
+                        Delete
+                      </button>
+                    )}
                   </div>
                 ))
               ) : (

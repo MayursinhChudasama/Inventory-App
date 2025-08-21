@@ -1,5 +1,5 @@
 export interface RegisterEntry {
-  type: 'inward' | 'outward';
+  type: "inward" | "outward";
   challan_no: string;
   category: string;
   user: string;
@@ -11,9 +11,10 @@ export interface RegisterEntry {
   }[];
 }
 
-export type ChallanType = 'inward' | 'outward';
+export type ChallanType = "inward" | "outward";
 
 export interface RegisterFilters {
+  source?: string;
   type?: ChallanType;
   startDate?: string;
   endDate?: string;

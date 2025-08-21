@@ -6,6 +6,7 @@ export interface singleProduct {
 export interface inwardEntry {
   _id?: string;
   type: string;
+  category: string;
   challan_no: string;
   source: string;
   user: string;

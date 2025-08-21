@@ -6,6 +6,7 @@ interface RegisterFilterProps {
   onFilterChange: (filters: RegisterFilters) => void;
   users: string[];
   categories: string[];
+  sources: string[];
   initialFilters?: RegisterFilters;
   setShowFilters: (show: boolean) => void;
 }
@@ -14,6 +15,7 @@ export const RegisterFilter: React.FC<RegisterFilterProps> = ({
   onFilterChange,
   users,
   categories,
+  sources,
   initialFilters = {},
   setShowFilters,
 }) => {
@@ -67,6 +69,27 @@ export const RegisterFilter: React.FC<RegisterFilterProps> = ({
                 key={category}
                 value={category}>
                 {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        {/* Sources Filter */}
+        <div className='bg-white rounded-lg'>
+          <h3 className='font-medium text-gray-700 mb-2 text-center'>
+            Sources
+          </h3>
+          <select
+            className='w-full p-2 border rounded-md'
+            defaultValue={initialFilters.source || "all"}
+            onChange={(e) =>
+              handleFilterChange({ source: e.target.value || undefined })
+            }>
+            <option value='all'>All Sources</option>
+            {sources.map((source) => (
+              <option
+                key={source}
+                value={source}>
+                {source}
               </option>
             ))}
           </select>

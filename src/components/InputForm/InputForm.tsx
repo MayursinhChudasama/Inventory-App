@@ -5,7 +5,7 @@ import { inwardEntry } from "@/models/models";
 import ProductsList from "./ProductsList";
 
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "@/app/store/products";
+import { useGetProductsQuery } from "@/app/store/productsApi";
 import { useAddChallanMutation } from "@/app/store/challan";
 import { useRouter } from "next/navigation";
 
@@ -17,6 +17,7 @@ const InputForm: React.FC<{
   const user = useSelector((state: any) => state.auth.user);
   const [entryData, setEntryData] = useState<inwardEntry>(() => ({
     type: activeChallanTab,
+    category: "",
     challan_no: "",
     source: "",
     user: user?.name || "",
@@ -24,21 +25,6 @@ const InputForm: React.FC<{
     products: [],
   }));
 
-  // Reset form when activeChallanTab changes
-  // useEffect(() => {
-  //   resetForm();
-  // }, [activeChallanTab]);
-
-  const resetForm = () => {
-    setEntryData({
-      type: activeChallanTab,
-      challan_no: "",
-      source: "",
-      user: user?.name || "",
-      createdAt: "",
-      products: [],
-    });
-  };
   //
   const {
     data: products,
@@ -48,10 +34,11 @@ const InputForm: React.FC<{
   const [useAddChallan, { error: addChallanError }]: any =
     useAddChallanMutation();
   const categories = Object.keys(products?.[0] || {}).filter(
-    (key) => key !== "_id"
+    (key) => key !== "_id" && key !== "Sources"
   );
 
-  const allBrands = Object.keys(products?.[0]?.["Black Cover"] || {}) || [];
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const allBrands = Object.keys(products?.[0]?.[selectedCategory] || {}) || [];
   const allSuppliers: string[] =
     Object.values(products?.[0]?.["Sources"]["Supplier"] || {}) || [];
   const allbuyers: string[] =
@@ -90,47 +77,64 @@ const InputForm: React.FC<{
   return (
     <div className='flex flex-col gap-2'>
       <div className='flex flex-col gap-4 w-full max-w-xs mx-auto mb-2'>
-        <div className='flex items-center justify-between'>
-          <label className='text-sm font-medium'>Date:</label>
-          <div className='w-40'>
+        {/* First Row - Date and Challan No */}
+        <div className='grid grid-cols-2 gap-4 w-full'>
+          <div className='flex flex-col gap-1'>
+            <label className='text-sm font-medium'>Date:</label>
             <input
               type='date'
-              className='w-full border border-gray-400 rounded-lg px-4 py-2 text-sm text-gray-700'
+              className='w-full border border-gray-400 rounded-lg px-3 py-2 text-sm text-gray-700'
               onChange={(e) =>
                 inwardEntryDataInputHandler("createdAt", e.target.value)
               }
               defaultValue={""}
             />
           </div>
+          <div className='flex flex-col gap-1'>
+            <label className='text-sm font-medium'>Challan No:</label>
+            <input
+              type='text'
+              className='w-full border border-gray-400 rounded-lg px-3 py-2 text-sm text-gray-700'
+              onChange={(e) =>
+                inwardEntryDataInputHandler("challan_no", e.target.value)
+              }
+              defaultValue={""}
+            />
+          </div>
         </div>
-        <div className='flex items-center justify-between'>
-          <label className='text-sm font-medium'>
-            {activeChallanTab === "inward" ? "Supplier:" : "Buyer:"}
-          </label>
-          <div className='w-40'>
+
+        {/* Second Row - Category and Supplier/Buyer */}
+        <div className='grid grid-cols-2 gap-4 w-full'>
+          <div className='flex flex-col gap-1'>
+            <label className='text-sm font-medium'>Category</label>
+            <Select
+              options={categories}
+              defaultValue='Category'
+              label='Category'
+              onChange={(e) => {
+                inwardEntryDataInputHandler("category", e.target.value);
+                setSelectedCategory(e.target.value);
+              }}
+              className='w-full'
+            />
+          </div>
+          <div className='flex flex-col gap-1'>
+            <label className='text-sm font-medium'>
+              {activeChallanTab === "inward" ? "Supplier" : "Buyer"}
+            </label>
             <Select
               options={activeChallanTab === "inward" ? allSuppliers : allbuyers}
               label={activeChallanTab === "inward" ? "Supplier" : "Buyer"}
               onChange={(e) =>
                 inwardEntryDataInputHandler("source", e.target.value)
               }
-              className='w-full py-2'
+              className='w-full'
             />
           </div>
         </div>
-        <div className='flex items-center justify-between'>
-          <label className='text-sm font-medium'>Challan No:</label>
-          <input
-            type='text'
-            className='border border-gray-400 rounded-lg px-4 py-2 text-sm w-40 text-gray-700'
-            onChange={(e) =>
-              inwardEntryDataInputHandler("challan_no", e.target.value)
-            }
-            defaultValue={""}
-          />
-        </div>
       </div>
       <ProductsList
+        selectedCategory={selectedCategory}
         allBrands={allBrands}
         products={products?.[0]}
         setEntryData={setEntryData}

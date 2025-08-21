@@ -10,7 +10,8 @@ const ProductsList: React.FC<{
   allBrands: string[];
   products: any;
   setEntryData: React.Dispatch<React.SetStateAction<inwardEntry>>;
-}> = ({ setEntryData, allBrands, products }) => {
+  selectedCategory: string;
+}> = ({ setEntryData, allBrands, products, selectedCategory }) => {
   const [items, setItems] = useState(
     Array.from({ length: 10 }, (_, i) => ({
       id: Date.now() + i + Math.random(),
@@ -87,6 +88,7 @@ const ProductsList: React.FC<{
                 handleChange={handleChange}
                 brandOptions={allBrands}
                 products={products}
+                selectedCategory={selectedCategory}
               />
             ))}
           </tbody>

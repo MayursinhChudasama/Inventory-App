@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import Category from "@/components/settings/Category";
 import Users from "@/components/settings/Users";
-import { useGetProductsQuery } from "../store/products";
+import { useGetProductsQuery } from "../store/productsApi";
 import Loading from "@/components/Loading";
 
 type ContentType = "category" | "users" | null;

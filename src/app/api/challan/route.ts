@@ -36,6 +36,9 @@ export async function POST(request: Request) {
     if (!data.createdAt) {
       errors.push("Please select a date.");
     }
+    if (!data.category || data.category == "Default") {
+      errors.push("Please select a category.");
+    }
     if (!data.source || data.source == "Default") {
       errors.push(
         `Please select a ${data.type === "inward" ? "Supplier" : "Buyer"}`
