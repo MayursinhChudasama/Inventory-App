@@ -1,7 +1,7 @@
 import Loading from "../Loading";
 import { inwardEntry } from "@/models/models";
-import EntryModal from "./EntryModal";
-import { useState } from "react";
+import EntryModal from "./currentChallanModal";
+import { useEffect, useState } from "react";
 import { useDeleteChallanMutation } from "@/app/store/challan";
 import Modal from "../ui/Modal";
 
@@ -46,17 +46,25 @@ export const RegisterTable: React.FC<RegisterTableProps> = ({
   const [currentChallan, setCurrentChallan] = useState<inwardEntry | undefined>(
     undefined
   );
+  const [delChallanID, setDelChallanID] = useState<string | undefined>(
+    undefined
+  );
   function handleEntryModal(id: string) {
     setCurrentChallan(entries.find((entry) => entry._id === id));
     setIsEntryModalOpen(true);
     setIsEditing(false);
   }
 
+  useEffect(() => {
+    if (!isEntryModalOpen) {
+      setCurrentChallan(undefined);
+    }
+  }, [isEntryModalOpen]);
+
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteChallan, { isLoading: isDeleting }] = useDeleteChallanMutation();
   function handleDelete() {
-    if (!currentChallan || !currentChallan._id) return;
-    deleteChallan(currentChallan._id);
+    deleteChallan(delChallanID!);
     setShowDeleteConfirm(false);
   }
 
@@ -66,9 +74,7 @@ export const RegisterTable: React.FC<RegisterTableProps> = ({
 
   if (entries.length === 0) {
     return (
-      <div className='text-center py-8 text-gray-500'>
-        No entries found matching your filters.
-      </div>
+      <div className='text-center py-8 text-gray-500'>No entries found.</div>
     );
   }
 
@@ -103,6 +109,7 @@ export const RegisterTable: React.FC<RegisterTableProps> = ({
               <td className={tdClasses}>
                 <button
                   onClick={(e) => {
+                    setDelChallanID(entry._id!);
                     e.stopPropagation();
                     setShowDeleteConfirm(true);
                   }}>
@@ -127,6 +134,7 @@ export const RegisterTable: React.FC<RegisterTableProps> = ({
       </table>
 
       <EntryModal
+        key={currentChallan?._id}
         isEditing={isEditing}
         setIsEditing={setIsEditing}
         isOpen={isEntryModalOpen}

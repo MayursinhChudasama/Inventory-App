@@ -34,11 +34,12 @@ export async function PUT(
 
   // updating a ChallanDATA
   try {
-    const challanId = params.id;
+    const challanId = await params.id;
     const updateData: inwardEntry = await req.json();
-
+    console.log("updateData", updateData);
+    console.log("challanId", challanId);
     // Validate Challan ID
-    if (!ObjectId.isValid(challanId)) {
+    if (!ObjectId.isValid(challanId!)) {
       return NextResponse.json(
         { error: "Invalid Challan ID" },
         { status: 400 }
@@ -60,7 +61,7 @@ export async function PUT(
       .updateOne({ _id: new ObjectId(challanId) }, { $set: updateData });
 
     if (result.matchedCount === 0) {
-      return NextResponse.json({ error: "Challan not found" }, { status: 404 });
+      return NextResponse.json({ error: "Challan no found" }, { status: 404 });
     }
 
     // Get updated Challan
@@ -85,7 +86,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const challanId = params.id;
+    const challanId = await params.id;
 
     // Validate Challan ID
     if (!ObjectId.isValid(challanId)) {

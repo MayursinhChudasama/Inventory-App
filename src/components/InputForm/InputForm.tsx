@@ -15,16 +15,19 @@ const InputForm: React.FC<{
   //
   const route = useRouter();
   const user = useSelector((state: any) => state.auth.user);
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("Black Cover");
   const [entryData, setEntryData] = useState<inwardEntry>(() => ({
     type: activeChallanTab,
-    category: "",
+    category: selectedCategory,
     challan_no: "",
     source: "",
     user: user?.name || "",
     createdAt: "",
+    lastUpdatedAt: null,
     products: [],
   }));
-
+  console.log("entryData", entryData);
   //
   const {
     data: products,
@@ -37,7 +40,6 @@ const InputForm: React.FC<{
     (key) => key !== "_id" && key !== "Sources"
   );
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const allBrands = Object.keys(products?.[0]?.[selectedCategory] || {}) || [];
   const allSuppliers: string[] =
     Object.values(products?.[0]?.["Sources"]["Supplier"] || {}) || [];

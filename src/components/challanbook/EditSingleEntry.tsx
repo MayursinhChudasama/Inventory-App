@@ -1,19 +1,12 @@
 import { useState } from "react";
-import Select from "./Select";
-import Image from "next/image";
+import Select from "../InputForm/Select";
+import { singleProduct } from "@/models/models";
 
 const tdClasses = "py-1 px-1 text-sm text-gray-700 align-middle";
 
-export default function SingleItem({
-  id,
-  i,
-  products,
-  handleRemove,
-  handleChange,
-  brandOptions,
-  selectedCategory,
-}: {
+const EditSingleEntry: React.FC<{
   id: number;
+  currentEntry: singleProduct;
   i: number;
   products: any;
   handleRemove: (id: number, i: number) => void;
@@ -24,49 +17,56 @@ export default function SingleItem({
   ) => void;
   brandOptions: string[];
   selectedCategory: string;
-}) {
+}> = ({
+  id,
+  currentEntry,
+  i,
+  products,
+  handleRemove,
+  handleChange,
+  brandOptions,
+  selectedCategory,
+}) => {
   const srNO = i + 1;
-
-  const [selectedBrand, setSelectedBrand] = useState<string>("");
+  const [selectedBrand, setSelectedBrand] = useState<string>(
+    currentEntry.brand
+  );
   const allModels: string[] =
     Object.values(products?.[selectedCategory]?.[selectedBrand] || {}) || [];
-
+  //   console.log("EditSingleEntry allModels", allModels);
+  //   console.log("EditSingleEntry currentEntry", currentEntry);
+  //   console.log("EditSingleEntry currentEntry brand", currentEntry.brand);
   return (
-    <tr className='hover:bg-gray-50'>
-      <td className={`${tdClasses} text-center`}>
-        {srNO < 10 ? "0" + srNO : srNO}
+    <tr>
+      <td className={tdClasses}>{srNO < 10 ? "0" + srNO : srNO}</td>
+      <td className={tdClasses}>
+        <Select
+          options={brandOptions}
+          defaultValue={currentEntry.brand}
+          handleChange={(e) => {
+            handleChange(e, i, "brand");
+            setSelectedBrand(e.target.value);
+          }}
+          label='Brand'
+          productKey={true}
+        />
       </td>
       <td className={tdClasses}>
-        <div className=''>
-          <Select
-            options={brandOptions}
-            handleChange={(e) => {
-              handleChange(e, i, "brand");
-              setSelectedBrand(e.target.value);
-            }}
-            className=' text-sm py-1.5'
-            label='Brand'
-            productKey={true}
-          />
-        </div>
-      </td>
-      <td className={tdClasses}>
-        <div className=''>
-          <Select
-            options={allModels || []}
-            handleChange={(e) => handleChange(e, i, "model")}
-            className=' text-sm py-1.5'
-            label='Model'
-            productKey={true}
-          />
-        </div>
+        <Select
+          options={allModels || []}
+          defaultValue={currentEntry.model}
+          handleChange={(e) => handleChange(e, i, "model")}
+          className=' text-sm py-1.5'
+          label='Model'
+          productKey={true}
+        />
       </td>
       <td className={tdClasses}>
         <input
           type='number'
+          defaultValue={currentEntry.qty ?? 0}
           className='w-full border border-gray-300 rounded px-2 py-1 textsm focus:outline-none focus:ring-1 focus:ring-blue-500'
           onChange={(e) => handleChange(e, i, "qty")}
-          defaultValue={0}
           placeholder='0'
           min='0'
         />
@@ -93,4 +93,6 @@ export default function SingleItem({
       </td>
     </tr>
   );
-}
+};
+
+export default EditSingleEntry;

@@ -21,7 +21,7 @@ const Select: React.FC<SelectProps> = ({
     <select
       defaultValue={defaultValue || "Default"}
       onChange={productKey ? handleChange : onChange}
-      className={`border border-gray-300 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700  py-1.5 text-sm ${className}`}>
+      className={`${className} border border-gray-300 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700  py-1.5 text-sm`}>
       {!defaultValue && (
         <option
           value={defaultValue || "Default"}

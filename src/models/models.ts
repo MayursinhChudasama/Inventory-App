@@ -12,6 +12,7 @@ export interface inwardEntry {
   user: string;
   products: singleProduct[];
   createdAt: string;
+  lastUpdatedAt: string | null;
 }
 
 export interface User {
