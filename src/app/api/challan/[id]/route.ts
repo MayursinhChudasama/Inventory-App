@@ -83,10 +83,9 @@ export async function PUT(request: Request) {
 // DELETE /api/challan/[id]
 // Delete a Challan
 export async function DELETE(request: Request) {
-  const req = new NextRequest(request.url, request);
   try {
-    const updateData: inwardEntry = await request.json();
-    const challanId = updateData._id;
+    const urlParts = request.url.split("/");
+    const challanId = urlParts[urlParts.length - 1];
 
     // Validate Challan ID
     if (!ObjectId.isValid(challanId)) {
