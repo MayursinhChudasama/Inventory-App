@@ -3,31 +3,30 @@ import {
   DashboardFiltersProps,
 } from "@/models/dashboardFilters";
 import { useState } from "react";
+import FilterSelect from "./FilterSelect";
 
-const selectClassNames =
-  "w-full p-2 border border-gray-300 rounded-md bg-white text-sm";
 const DashboardFilters: React.FC<DashboardFiltersProps> = ({
+  selectedBrand,
   onFilterChange,
+  setSelectedBrand,
   handleClearFilters,
   initialFilters = {},
   CATEGORY,
   BRANDS,
   MODELS,
 }) => {
-  const [filters, setFilters] = useState<DashboardFiltersType>({});
+  const [trigger, setTrigger] = useState<boolean>(false);
 
   function handleFilterChange(newFilters: Partial<DashboardFiltersType>) {
-    const updatedFilters = { ...filters, ...newFilters };
-    setFilters(updatedFilters);
-    onFilterChange(updatedFilters);
+    onFilterChange(newFilters);
   }
-
-  console.log("filters---", filters);
-  console.log("initialFilters---", initialFilters);
+  //
+  // console.log("filters---", filters);
+  // console.log("initialFilters---", initialFilters);
   return (
     <div className='space-y-4 p-4 rounded-lg'>
       {/* Search Bar & Clear Filters */}
-      <div className='flex items-center justify-between gap-4 mb-4'>
+      <div className='flex items-center justify-between gap-4 mb-5'>
         <div className='relative w-64'>
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
             <svg
@@ -44,88 +43,63 @@ const DashboardFilters: React.FC<DashboardFiltersProps> = ({
             </svg>
           </div>
           <input
-            defaultValue={initialFilters?.search ?? ""}
+            value={initialFilters?.search ?? ""}
             onChange={(e) =>
               handleFilterChange({ search: e.target.value ?? undefined })
             }
             type='search'
             className='block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm'
-            placeholder='Search'
+            placeholder='Search by Brand or Model'
           />
         </div>
         <button
-          onClick={handleClearFilters}
+          onClick={() => {
+            handleClearFilters();
+            setTrigger((prev) => !prev);
+          }}
           className='px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 whitespace-nowrap'>
           Clear Filters
         </button>
       </div>
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
-        {/* Date */}
+      <div className='grid grid-cols-3 md:grid-cols-4 gap-5 '>
+        {/* Date
         <div>
           <p className='text-xs text-gray-500 mb-1'>Date</p>
           <div className='p-2 border border-gray-300 rounded-md bg-white text-sm'>
             Select Date
           </div>
-        </div>
-
+        </div> */}
         {/* Category */}
         <div>
-          <p className='text-xs text-gray-500 mb-1'>Category</p>
-          <select
-            defaultValue='all'
-            onChange={(e) =>
-              handleFilterChange({ category: e.target.value || undefined })
-            }
-            className='w-full p-2 border border-gray-300 rounded-md bg-white text-sm'>
-            <option value='all'>All Categories</option>
-            {CATEGORY.map((cat) => (
-              <option
-                key={cat}
-                value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
+          <FilterSelect
+            key='category'
+            label='Category'
+            options={CATEGORY}
+            defValue={initialFilters.category || "all"}
+            onChange={handleFilterChange}
+          />
         </div>
-
         {/* Brand */}
         <div>
-          <p className='text-xs text-gray-500 mb-1'>Brand</p>
-          <select
-            defaultValue={initialFilters.brand || "all"}
-            onChange={(e) =>
-              handleFilterChange({ brand: e.target.value || undefined })
-            }
-            className='w-full p-2 border border-gray-300 rounded-md bg-white text-sm'>
-            <option value='all'>All Brands</option>
-            {BRANDS.map((brand) => (
-              <option
-                key={brand}
-                value={brand}>
-                {brand}
-              </option>
-            ))}
-          </select>
+          <FilterSelect
+            key='brand'
+            label='Brand'
+            options={BRANDS}
+            defValue={initialFilters.brand || "all"}
+            onChange={handleFilterChange}
+            setSelectedBrand={setSelectedBrand}
+          />
         </div>
-
         {/* Model */}
         <div>
-          <p className='text-xs text-gray-500 mb-1'>Model</p>
-          <select
-            defaultValue={initialFilters.brand || "all"}
-            onChange={(e) =>
-              handleFilterChange({ model: e.target.value || undefined })
-            }
-            className='w-full p-2 border border-gray-300 rounded-md bg-white text-sm'>
-            <option value='all'>All Models</option>
-            {MODELS.map((model) => (
-              <option
-                key={model}
-                value={model}>
-                {model}
-              </option>
-            ))}
-          </select>
+          <FilterSelect
+            key='model'
+            label='Model'
+            isDisabled={!selectedBrand || initialFilters.brand === "all"}
+            options={MODELS}
+            defValue={initialFilters.model || "all"}
+            onChange={handleFilterChange}
+          />
         </div>
       </div>
     </div>

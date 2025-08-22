@@ -5,6 +5,8 @@ export interface DashboardFiltersType {
   search?: string;
 }
 export interface DashboardFiltersProps {
+  selectedBrand?: string;
+  setSelectedBrand: (brand: string) => void;
   onFilterChange: (filters: DashboardFiltersType) => void;
   handleClearFilters?: () => void;
   initialFilters: DashboardFiltersType;
