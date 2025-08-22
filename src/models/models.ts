@@ -31,6 +31,7 @@ export interface CreateUser {
 }
 
 export interface UpdateUser {
+  id?: string | undefined;
   name?: string;
   username?: string;
   passwordHash?: string;

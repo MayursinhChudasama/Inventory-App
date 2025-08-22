@@ -20,13 +20,13 @@ const UserCard: React.FC<UserCardProps> = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-
   const handleSubmit = async (
     e: React.FormEvent,
     formData: { name?: string; username?: string; password?: string }
   ) => {
     e.preventDefault();
     const updatedUserData: UpdateUser = {
+      id: user._id!,
       name: formData.name,
       username: formData.username,
     };

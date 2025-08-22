@@ -8,6 +8,7 @@ import {
   useDeleteProductMutation,
 } from "@/app/store/productsApi";
 import Loading from "../Loading";
+import { type } from "os";
 
 type BrandModels = {
   [brand: string]: string[];
@@ -26,7 +27,7 @@ const Category: React.FC = () => {
     useDeleteProductMutation();
 
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [deleteItem, setDeleteItem] = useState<string>("");
+  const [deleteItem, setDeleteItem] = useState({ item: "", type: "" });
 
   const allCategory =
     Object.keys(products || {}).filter((key) => key !== "_id") || [];
@@ -61,18 +62,21 @@ const Category: React.FC = () => {
 
   const handleAddModel = async (type: string, value: string) => {
     try {
-      if (!data?.[0]?._id) {
+      const productId = data[0]._id;
+      if (!productId) {
         throw new Error("No product ID available");
       }
-      const productId = data[0]._id;
+
       let payload = {};
       if (type == "MODELS") {
         payload = {
+          id: productId,
           type: "addModel",
           body: { [selectedCategory + "." + selectedBrand]: value },
         };
       } else if (type == "BRANDS") {
         payload = {
+          id: productId,
           type: "addBrand",
           body: { [selectedCategory + "." + value]: [] },
         };
@@ -92,20 +96,22 @@ const Category: React.FC = () => {
 
   const handleDeleteModel = async (type: string, value: string) => {
     try {
-      if (!data?.[0]?._id) {
+      const productId = data[0]._id;
+      if (!productId) {
         throw new Error("No product ID available");
       }
-      const productId = data[0]._id;
       let payload = {};
       if (type == "MODELS") {
         payload = {
+          id: productId,
           type: "deleteModel",
           body: { [selectedCategory + "." + selectedBrand]: value },
         };
       } else if (type == "BRANDS") {
         payload = {
+          id: productId,
           type: "deleteBrand",
-          body: { [selectedCategory + "." + "value"]: "" },
+          body: { [selectedCategory + "." + value]: "" },
         };
       }
       console.log("payload", payload);
@@ -117,7 +123,7 @@ const Category: React.FC = () => {
       setShowDeleteConfirm(false);
       return result;
     } catch (error) {
-      console.error("Failed to update product:", error);
+      console.error("Failed to delete product:", error);
       throw error;
     }
   };
@@ -182,7 +188,9 @@ const Category: React.FC = () => {
                     {selectedCategory !== "Sources" && (
                       <button
                         onClick={() => {
-                          setDeleteItem(item);
+                          // console.log("item", item);
+
+                          setDeleteItem({ item, type: "BRANDS" });
                           setShowDeleteConfirm(true);
                         }}
                         className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
@@ -234,7 +242,7 @@ const Category: React.FC = () => {
                     <div className='flex gap-2'>
                       <button
                         onClick={() => {
-                          setDeleteItem(item);
+                          setDeleteItem({ item, type: "MODELS" });
                           setShowDeleteConfirm(true);
                         }}
                         className='text-sm text-red-500 hover:text-red-600 cursor-pointer'>
@@ -260,7 +268,7 @@ const Category: React.FC = () => {
         onClose={() => setShowDeleteConfirm(false)}
         title='Confirm Deletion'>
         <div className='space-y-4'>
-          <p>Are you sure you want to delete {selectedCategory}?</p>
+          <p>Are you sure you want to delete ?</p>
           <div className='flex justify-end space-x-2 mt-4'>
             <button
               onClick={() => setShowDeleteConfirm(false)}
@@ -268,7 +276,9 @@ const Category: React.FC = () => {
               Cancel
             </button>
             <button
-              onClick={() => handleDeleteModel("MODELS", deleteItem)}
+              onClick={() =>
+                handleDeleteModel(deleteItem.type, deleteItem.item)
+              }
               disabled={isDeleteProductLoading}
               className='px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'>
               {isDeleteProductLoading ? "Deleting..." : "Confirm Delete"}

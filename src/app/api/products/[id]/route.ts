@@ -8,13 +8,13 @@ const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 const client = await clientPromise;
 const db = client.db(process.env.MONGODB_DB);
 
-export async function PUT(
-  req: NextRequest,
-  context: { params: { id: string } }
-) {
-  const { id } = await context.params;
+export async function PUT(req: Request) {
   // Authorization checking
-  const token = req.cookies.get("token")?.value;
+  const token = req.headers
+    .get("cookie")
+    ?.split("; ")
+    .find((c) => c.startsWith("token="))
+    ?.split("=")[1];
   if (!token) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
@@ -29,7 +29,8 @@ export async function PUT(
   }
   //update
   try {
-    const productId = id;
+    const payload = await req.json();
+    const productId = payload.id;
     if (!ObjectId.isValid(productId)) {
       console.error("Invalid product ID:", productId);
       return NextResponse.json(
@@ -38,7 +39,6 @@ export async function PUT(
       );
     }
 
-    const payload = await req.json();
     let result;
     if (payload.type == "addModel") {
       result = await db
@@ -71,13 +71,13 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  context: { params: { id: string } }
-) {
-  const { id } = await context.params;
+export async function DELETE(req: Request) {
   // Authorization checking
-  const token = req.cookies.get("token")?.value;
+  const token = req.headers
+    .get("cookie")
+    ?.split("; ")
+    .find((c) => c.startsWith("token="))
+    ?.split("=")[1];
   if (!token) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
@@ -92,7 +92,8 @@ export async function DELETE(
   }
   //delete
   try {
-    const productId = id;
+    const payload = await req.json();
+    const productId = payload.id;
     if (!ObjectId.isValid(productId)) {
       console.error("Invalid product ID:", productId);
       return NextResponse.json(
@@ -100,8 +101,8 @@ export async function DELETE(
         { status: 400 }
       );
     }
+    console.log("payload", payload);
 
-    const payload = await req.json();
     let result;
     if (payload.type == "deleteModel") {
       result = await db

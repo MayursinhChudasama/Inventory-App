@@ -13,12 +13,13 @@ const db = client.db(process.env.MONGODB_DB);
 
 // PATCH /api/users/[id]
 // Update a user
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: Request) {
   //authorization checking
-  const token = req.cookies.get("token")?.value;
+  const token = req.headers
+    .get("cookie")
+    ?.split("; ")
+    .find((c) => c.startsWith("token="))
+    ?.split("=")[1];
   if (!token) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
@@ -34,9 +35,9 @@ export async function PATCH(
   // updating a userDATA
 
   try {
-    const userId = params.id;
     const updateData: UpdateUser = await req.json();
-
+    console.log("updateData->>", updateData);
+    const userId = updateData.id!;
     // Validate user ID
     if (!ObjectId.isValid(userId)) {
       return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
@@ -52,14 +53,14 @@ export async function PATCH(
     }
 
     // Prepare update object
-    const updateObj: UpdateUser = {
-      ...updateData,
-    };
+    const updateObj: UpdateUser = JSON.parse(JSON.stringify(updateData));
+    delete updateObj.id;
 
     // Hash new password if provided
     if (updateData.passwordHash) {
       updateObj.passwordHash = await hash(updateData.passwordHash, 10);
     }
+    console.log("updateObj->>", updateObj);
 
     // Update user
     const result = await db
@@ -88,12 +89,10 @@ export async function PATCH(
 
 // DELETE /api/users/[id]
 // Delete a user
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request) {
   try {
-    const userId = params.id;
+    const urlParts = request.url.split("/");
+    const userId = urlParts[urlParts.length - 1];
 
     // Validate user ID
     if (!ObjectId.isValid(userId)) {
