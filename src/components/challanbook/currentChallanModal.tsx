@@ -50,8 +50,8 @@ const EntryModal: React.FC<{
     try {
       const payload = JSON.parse(JSON.stringify(formData));
       payload.lastUpdatedAt = Date.now();
-      delete payload._id;
-      console.log("payload", payload);
+      // delete payload._id;
+      // console.log("payload", payload);
       const result = await updateChallan({
         id: currentChallan._id!,
         body: payload,

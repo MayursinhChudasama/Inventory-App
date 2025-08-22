@@ -13,10 +13,7 @@ const db = client.db(process.env.MONGODB_DB);
 
 // PUT /api/challan/[id]
 // Update Challan
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: Request) {
   //authorization checking
   const token = request.headers
     .get("cookie")
@@ -38,8 +35,8 @@ export async function PUT(
 
   // updating a ChallanDATA
   try {
-    const challanId = await params.id;
     const updateData: inwardEntry = await request.json();
+    const challanId = updateData._id;
     // Validate Challan ID
     if (!ObjectId.isValid(challanId!)) {
       return NextResponse.json(
@@ -58,9 +55,11 @@ export async function PUT(
     }
 
     // Update Challan
+    const payload = JSON.parse(JSON.stringify(updateData));
+    delete payload._id;
     const result = await db
       .collection("challans")
-      .updateOne({ _id: new ObjectId(challanId) }, { $set: updateData });
+      .updateOne({ _id: new ObjectId(challanId) }, { $set: payload });
 
     if (result.matchedCount === 0) {
       return NextResponse.json({ error: "Challan no found" }, { status: 404 });
