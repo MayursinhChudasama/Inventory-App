@@ -1,4 +1,5 @@
 export interface singleChallanEntry {
+  category: string;
   brand: string;
   model: string;
   qty: number;

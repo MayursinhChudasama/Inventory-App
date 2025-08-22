@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Select from "../InputForm/Select";
 import { singleProduct } from "@/models/models";
+import { Product } from "@/app/store/productsApi";
 
 const tdClasses = "py-1 px-1 text-sm text-gray-700 align-middle";
 
@@ -8,7 +9,7 @@ const EditSingleEntry: React.FC<{
   id: number;
   currentEntry: singleProduct;
   i: number;
-  products: any;
+  products: Product[];
   handleRemove: (id: number, i: number) => void;
   handleChange: (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,

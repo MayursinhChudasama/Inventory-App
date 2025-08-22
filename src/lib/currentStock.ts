@@ -1,4 +1,7 @@
-export default function getCurrentStock(ALL_CHALLANS) {
+import { cStockChallans, singleChallanEntry } from "@/models/challans";
+import { inwardEntry } from "@/models/models";
+
+export default function getCurrentStock(ALL_CHALLANS: inwardEntry[]) {
   const inwardChallans = ALL_CHALLANS?.filter(
     (challan) => challan.type === "inward"
   );
@@ -37,7 +40,7 @@ export default function getCurrentStock(ALL_CHALLANS) {
   // console.log("outwardChallansFlatArr", outwardChallansFlatArr);
   const InwarduniqueModelsArrayName: string[] = [];
   const OutwarduniqueModelsArrayName: string[] = [];
-  let final_inward_challans_array: any[] = [];
+  const final_inward_challans_array: singleChallanEntry[] = [];
   // final_inward_challans_array
   const array = inwardChallansFlatArr?.map((product) => {
     const finalResultArray2 = [];
@@ -67,7 +70,7 @@ export default function getCurrentStock(ALL_CHALLANS) {
     return finalResultArray2;
   });
 
-  let final_outward_challans_array: any[] = [];
+  const final_outward_challans_array: singleChallanEntry[] = [];
   const array2 = outwardChallansFlatArr?.map((product) => {
     const finalResultArray2 = [];
     if (!OutwarduniqueModelsArrayName.includes(product.model)) {

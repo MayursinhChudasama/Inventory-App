@@ -5,7 +5,7 @@ export const DateRangeFilter = ({
   setShowFilters,
 }: {
   onDateRangeChange: (startDate: string, endDate: string) => void;
-  setShowFilters: (show: any) => void;
+  setShowFilters: (show: boolean) => void;
 }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -13,10 +13,13 @@ export const DateRangeFilter = ({
   const handleApply = () => {
     if (startDate && endDate) {
       // If same day is selected, we want to show entries for that specific day
-      const effectiveEndDate = startDate === endDate 
-        ? new Date(new Date(endDate).setDate(new Date(endDate).getDate() + 1)).toISOString().split('T')[0]
-        : endDate;
-      
+      const effectiveEndDate =
+        startDate === endDate
+          ? new Date(new Date(endDate).setDate(new Date(endDate).getDate() + 1))
+              .toISOString()
+              .split("T")[0]
+          : endDate;
+
       onDateRangeChange(startDate, effectiveEndDate);
       setShowFilters(false);
     }

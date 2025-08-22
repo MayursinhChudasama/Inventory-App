@@ -6,7 +6,7 @@ import ChallanCard from "@/components/Stock Dashboard/ChallansCard";
 import { cStockChallans, singleChallanEntry } from "@/models/challans";
 
 const SpecificModelPage = ({ params }: { params: { model: string } }) => {
-  const { model } = React.use(params);
+  const { model }: { model: string } = React.use(params);
   const currentModel = decodeURIComponent(model);
   const { data: ALL_CHALLANS } = useGetChallansQuery();
 

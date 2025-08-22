@@ -32,7 +32,7 @@ const EntryModal: React.FC<{
 
   function handleFormData(key: string, value: string) {
     if (!key || !value) return;
-    setFormData((prev: any) => ({
+    setFormData((prev) => ({
       ...prev,
       [key]: value,
     }));

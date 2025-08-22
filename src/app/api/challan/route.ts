@@ -1,4 +1,5 @@
 import clientPromise from "@/lib/mongodb";
+import { singleProduct } from "@/models/models";
 
 export async function GET() {
   try {
@@ -30,7 +31,8 @@ export async function POST(request: Request) {
 
     const errors: string[] = [];
     const productsWithMissingFields = data.products.filter(
-      (product: any) => !product.brand || !product.model || !product.qty
+      (product: singleProduct) =>
+        !product.brand || !product.model || !product.qty
     );
 
     if (!data.createdAt) {

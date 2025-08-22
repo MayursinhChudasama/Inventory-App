@@ -2,6 +2,7 @@ import { inwardEntry, singleProduct } from "@/models/models";
 import { useGetProductsQuery } from "@/app/store/productsApi";
 import EditSingleEntry from "./EditSingleEntry";
 import { useEffect, useState } from "react";
+import { singleChallanEntry } from "@/models/challans";
 
 const thClasses =
   "py-2 px-2 text-center text-sm font-medium text-gray-700 whitespace-nowrap";
@@ -92,7 +93,7 @@ const EditProductList: React.FC<{
         </thead>
         <tbody className=''>
           {!isEditing &&
-            challanProducts.map((item: any, i: number) => (
+            challanProducts.map((item: singleProduct, i: number) => (
               <tr key={i}>
                 <td className={`${thClasses} text-center`}>{i + 1}</td>
                 <td className={thClasses}>{item.brand}</td>
@@ -101,7 +102,7 @@ const EditProductList: React.FC<{
               </tr>
             ))}
           {isEditing &&
-            items.map((item: any, i: number) => (
+            items.map((item: { id: number }, i: number) => (
               <EditSingleEntry
                 key={item.id}
                 id={item.id}
