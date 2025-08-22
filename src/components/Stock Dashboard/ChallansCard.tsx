@@ -1,9 +1,11 @@
+import { singleChallanEntry } from "@/models/challans";
+
 const ChallanCard: React.FC<{
   type?: string;
-  all_challans: any;
+  all_challans: singleChallanEntry[];
 }> = ({ type, all_challans }) => {
   const total = all_challans?.reduce(
-    (total: number, entry: any) => total + entry.qty,
+    (total: number, entry: singleChallanEntry) => total + entry.qty,
     0
   );
   return (
@@ -35,7 +37,7 @@ const ChallanCard: React.FC<{
             </tr>
           </thead>
           <tbody className='bg-white divide-y divide-gray-200'>
-            {all_challans?.map((entry: any, i: number) => (
+            {all_challans?.map((entry: singleChallanEntry, i: number) => (
               <tr
                 key={i}
                 className='hover:bg-gray-50'>

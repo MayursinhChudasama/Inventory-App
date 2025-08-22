@@ -52,7 +52,7 @@ export async function PATCH(
     }
 
     // Prepare update object
-    const updateObj: any = {
+    const updateObj: UpdateUser = {
       ...updateData,
     };
 

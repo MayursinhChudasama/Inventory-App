@@ -3,6 +3,7 @@ import React from "react";
 import getCurrentStock from "@/lib/currentStock";
 import { useGetChallansQuery } from "../../store/challan";
 import ChallanCard from "@/components/Stock Dashboard/ChallansCard";
+import { cStockChallans, singleChallanEntry } from "@/models/challans";
 
 const SpecificModelPage = ({ params }: { params: { model: string } }) => {
   const { model } = React.use(params);
@@ -16,15 +17,15 @@ const SpecificModelPage = ({ params }: { params: { model: string } }) => {
   } = getCurrentStock(ALL_CHALLANS);
 
   const all_inward_challans = inwardChallansFlatArr?.filter(
-    (entry: any) => entry.model === currentModel
+    (entry: singleChallanEntry) => entry.model === currentModel
   );
 
   const all_outward_challans = outwardChallansFlatArr?.filter(
-    (entry: any) => entry.model === currentModel
+    (entry: singleChallanEntry) => entry.model === currentModel
   );
 
   const totalOutward = all_outward_challans?.reduce(
-    (total: number, entry: any) => total + entry.qty,
+    (total: number, entry: singleChallanEntry) => total + entry.qty,
     0
   );
 
@@ -47,8 +48,8 @@ const SpecificModelPage = ({ params }: { params: { model: string } }) => {
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           {CURRENT_STOCK_CHALLANS?.filter(
-            (item: any) => item.model === currentModel
-          ).map((item: any) => (
+            (item: cStockChallans) => item.model === currentModel
+          ).map((item: cStockChallans) => (
             <div
               key={item.model}
               className='bg-blue-50 p-4 rounded-lg flex justify-between'>

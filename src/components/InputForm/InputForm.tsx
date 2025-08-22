@@ -6,6 +6,7 @@ import ProductsList from "./ProductsList";
 
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "@/app/store/productsApi";
+import { RootState } from "@/app/store/store";
 import { useAddChallanMutation } from "@/app/store/challan";
 import { useRouter } from "next/navigation";
 
@@ -14,7 +15,7 @@ const InputForm: React.FC<{
 }> = ({ activeChallanTab }) => {
   //
   const route = useRouter();
-  const user = useSelector((state: any) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
   const [selectedCategory, setSelectedCategory] =
     useState<string>("Black Cover");
   const [entryData, setEntryData] = useState<inwardEntry>(() => ({
@@ -34,13 +35,13 @@ const InputForm: React.FC<{
     isLoading,
     error: getProductsError,
   } = useGetProductsQuery();
-  const [useAddChallan, { error: addChallanError }]: any =
-    useAddChallanMutation();
+  const [addChallan, { error: addChallanError }] = useAddChallanMutation();
   const categories = Object.keys(products?.[0] || {}).filter(
     (key) => key !== "_id" && key !== "Sources"
   );
 
-  const allBrands = Object.keys(products?.[0]?.[selectedCategory] || {}) || [];
+  const allBrands: string[] =
+    Object.keys(products?.[0]?.[selectedCategory] || {}) || [];
   const allSuppliers: string[] =
     Object.values(products?.[0]?.["Sources"]["Supplier"] || {}) || [];
   const allbuyers: string[] =
@@ -54,7 +55,7 @@ const InputForm: React.FC<{
     value?: string | number
   ) => {
     if (!key) return;
-    setEntryData((prev: any) => ({
+    setEntryData((prev: inwardEntry) => ({
       ...prev,
       [key]: value,
     }));
@@ -62,7 +63,7 @@ const InputForm: React.FC<{
 
   async function handleAddEntryData() {
     try {
-      const result = await useAddChallan({ body: entryData }).unwrap();
+      const result = await addChallan({ body: entryData }).unwrap();
 
       setSuccessMessage("Challan added successfully!");
 

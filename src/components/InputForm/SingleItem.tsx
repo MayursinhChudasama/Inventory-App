@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "./Select";
-import Image from "next/image";
+import { Product } from "@/app/store/productsApi";
 
 const tdClasses = "py-1 px-1 text-sm text-gray-700 align-middle";
 
@@ -15,7 +15,8 @@ export default function SingleItem({
 }: {
   id: number;
   i: number;
-  products: any;
+  products: Product[];
+
   handleRemove: (id: number, i: number) => void;
   handleChange: (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
@@ -23,13 +24,22 @@ export default function SingleItem({
     key: string
   ) => void;
   brandOptions: string[];
-  selectedCategory: string;
+  selectedCategory: string | undefined;
 }) {
   const srNO = i + 1;
 
   const [selectedBrand, setSelectedBrand] = useState<string>("");
-  const allModels: string[] =
-    Object.values(products?.[selectedCategory]?.[selectedBrand] || {}) || [];
+  const allModels: string[] = (() => {
+    if (
+      !selectedCategory ||
+      !products[selectedCategory as keyof typeof products]
+    )
+      return [];
+    const category = products[selectedCategory as keyof typeof products];
+    if (typeof category !== "object" || !category) return [];
+    const brandData = category[selectedBrand as keyof typeof category];
+    return Array.isArray(brandData) ? brandData : [];
+  })();
 
   return (
     <tr className='hover:bg-gray-50'>

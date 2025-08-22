@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     const data = await request.json();
     console.log("data", data);
 
-    let errors = [];
+    const errors: string[] = [];
     const productsWithMissingFields = data.products.filter(
       (product: any) => !product.brand || !product.model || !product.qty
     );

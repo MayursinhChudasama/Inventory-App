@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { RegisterFilter } from "@/components/challanbook/RegisterFilter";
 import { RegisterTable } from "@/components/challanbook/RegisterTable";
-import { RegisterEntry, RegisterFilters, ChallanType } from "@/models/register";
+import { RegisterFilters, ChallanType } from "@/models/register";
 import { ChallanTypeButtons } from "@/components/challanbook/ChallanTypeButtons";
 import Modal from "@/components/ui/Modal";
 import Loading from "@/components/Loading";
@@ -113,10 +113,6 @@ export default function RegisterPage() {
       ...prevFilters,
       ...newFilters,
     }));
-  }, []);
-
-  const handleRowClick = useCallback((challan: RegisterEntry) => {
-    console.log("Row clicked:", challan);
   }, []);
 
   const handleClearFilters = () => {

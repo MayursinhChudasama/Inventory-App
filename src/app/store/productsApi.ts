@@ -1,5 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+export interface Product {
+  _id: string;
+  brand: string;
+  model: string;
+  category: string;
+  source: string;
+  user: string;
+  createdAt: string;
+}
+
 const productsApi = createApi({
   reducerPath: "products",
   baseQuery: fetchBaseQuery({
@@ -7,7 +17,7 @@ const productsApi = createApi({
   }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
-    getProducts: builder.query<any, void>({
+    getProducts: builder.query<Product[], void>({
       query: () => "/",
       providesTags: (result) =>
         result
@@ -20,7 +30,7 @@ const productsApi = createApi({
             ]
           : [{ type: "Product", id: "LIST" }],
     }),
-    addProduct: builder.mutation<any, { id: string; body: any }>({
+    addProduct: builder.mutation<Product, { id: string; body: Product }>({
       query: ({ id, body }) => ({
         url: `/${id}`,
         method: "PUT",
@@ -28,7 +38,7 @@ const productsApi = createApi({
       }),
       invalidatesTags: [{ type: "Product", id: "LIST" }],
     }),
-    deleteProduct: builder.mutation<any, { id: string; body: any }>({
+    deleteProduct: builder.mutation<void, { id: string; body: Product }>({
       query: ({ id, body }) => ({
         url: `/${id}`,
         method: "DELETE",

@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import SingleItem from "./SingleItem";
 import { inwardEntry, singleProduct } from "@/models/models";
 import Select from "./Select";
+import { Product } from "@/app/store/productsApi";
 
 const thClasses =
   "py-2 px-2 text-center text-sm font-medium text-gray-700 whitespace-nowrap";
+interface item {
+  id: number;
+}
 
 const ProductsList: React.FC<{
   allBrands: string[];
-  products: any;
+  products: Product;
   setEntryData: React.Dispatch<React.SetStateAction<inwardEntry>>;
   selectedCategory: string;
 }> = ({ setEntryData, allBrands, products, selectedCategory }) => {
@@ -80,7 +84,7 @@ const ProductsList: React.FC<{
             </tr>
           </thead>
           <tbody className=''>
-            {items.map((item: any, i: number) => (
+            {items.map((item: item, i: number) => (
               <SingleItem
                 key={item.id}
                 id={item.id}

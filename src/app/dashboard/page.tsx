@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentTab } from "../store/ui";
+import { cStockChallans } from "@/models/challans";
 
 const thClasses =
   "px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider";
@@ -42,7 +43,7 @@ export default function DashboardPage() {
           </tr>
         </thead>
         <tbody className='bg-white divide-y divide-gray-200'>
-          {CURRENT_STOCK_CHALLANS?.map((entry: any, i: number) => (
+          {CURRENT_STOCK_CHALLANS?.map((entry: cStockChallans, i: number) => (
             <tr
               key={`${entry.category}-${entry.brand}-${entry.model}`}
               className='hover:bg-gray-50 cursor-pointer'>
