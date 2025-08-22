@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import { ChallanTypeButtons } from "@/components/challanbook/ChallanTypeButtons";
-import { ChallanType } from "@/models/register";
-import InputForm from "@/components/InputForm/InputForm";
+import { ChallanTypeButtons } from "../../components/challanbook/ChallanTypeButtons";
+import { ChallanType } from "../../models/register";
+import InputForm from "../../components/InputForm/InputForm";
 
 export default function Add() {
   const [activeChallanTab, setActiveChallanTab] =

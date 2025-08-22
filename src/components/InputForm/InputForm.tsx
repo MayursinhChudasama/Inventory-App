@@ -10,6 +10,9 @@ import { RootState } from "@/app/store/store";
 import { useAddChallanMutation } from "@/app/store/challan";
 import { useRouter } from "next/navigation";
 
+interface product
+
+
 const InputForm: React.FC<{
   activeChallanTab: string;
 }> = ({ activeChallanTab }) => {
