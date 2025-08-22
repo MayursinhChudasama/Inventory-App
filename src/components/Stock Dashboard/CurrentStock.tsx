@@ -5,8 +5,10 @@ import getCurrentStock from "@/lib/currentStock";
 import { useGetChallansQuery } from "../../app/store/challan";
 const CurrentStock: React.FC<{ model: string }> = ({ model }) => {
   const currentModel = decodeURIComponent(model);
-  const { data: ALL_CHALLANS } = useGetChallansQuery();
-
+  const { data: ALL_CHALLANS, isLoading, error } = useGetChallansQuery();
+  if (!ALL_CHALLANS) {
+    return;
+  }
   const {
     inwardChallansFlatArr,
     outwardChallansFlatArr,
@@ -28,6 +30,16 @@ const CurrentStock: React.FC<{ model: string }> = ({ model }) => {
       (total: number, entry: singleChallanEntry) => total + entry.qty,
       0
     ) ?? 0;
+
+  if (isLoading) {
+    return <div className='container mx-auto px-4 py-8'>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className='container mx-auto px-4 py-8'>Error loading data</div>
+    );
+  }
   return (
     <div>
       <div className='mb-8'>
