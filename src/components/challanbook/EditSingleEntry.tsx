@@ -34,9 +34,6 @@ const EditSingleEntry: React.FC<{
   );
   const allModels: string[] =
     Object.values(products?.[selectedCategory]?.[selectedBrand] || {}) || [];
-  //   console.log("EditSingleEntry allModels", allModels);
-  //   console.log("EditSingleEntry currentEntry", currentEntry);
-  //   console.log("EditSingleEntry currentEntry brand", currentEntry.brand);
   return (
     <tr>
       <td className={tdClasses}>{srNO < 10 ? "0" + srNO : srNO}</td>

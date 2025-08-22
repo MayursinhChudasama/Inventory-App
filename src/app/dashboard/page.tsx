@@ -21,7 +21,6 @@ export default function DashboardPage() {
   const { data: ALL_CHALLANS } = useGetChallansQuery();
 
   const { CURRENT_STOCK_CHALLANS } = getCurrentStock(ALL_CHALLANS);
-  // console.log("CURRENT_STOCK_CHALLANS", CURRENT_STOCK_CHALLANS);
 
   useEffect(() => {
     if (currentTab !== "Stock Dashboard") {

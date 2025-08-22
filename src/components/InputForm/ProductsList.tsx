@@ -23,7 +23,6 @@ const ProductsList: React.FC<{
   );
   const [productList, setProductList] = useState<singleProduct[]>([]);
   const totalQty = productList.reduce((acc, item) => acc + (item.qty || 0), 0);
-  console.log("productList-->>", productList);
 
   //
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {

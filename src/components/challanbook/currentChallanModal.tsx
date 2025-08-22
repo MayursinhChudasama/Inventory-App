@@ -18,7 +18,6 @@ const EntryModal: React.FC<{
   currentChallan: inwardEntry | undefined;
 }> = ({ isOpen, onClose, currentChallan, isEditing, setIsEditing }) => {
   //
-  console.log("currentChallan", currentChallan);
 
   const [formData, setFormData] = useState<Partial<inwardEntry>>(
     currentChallan || {}
@@ -45,13 +44,9 @@ const EntryModal: React.FC<{
   }
 
   async function handleOnSave() {
-    // console.log("formData", formData);
-
     try {
       const payload = JSON.parse(JSON.stringify(formData));
       payload.lastUpdatedAt = Date.now();
-      // delete payload._id;
-      // console.log("payload", payload);
       const result = await updateChallan({
         id: currentChallan._id!,
         body: payload,

@@ -28,7 +28,6 @@ const InputForm: React.FC<{
     lastUpdatedAt: null,
     products: [],
   }));
-  console.log("entryData", entryData);
   //
   const {
     data: products,

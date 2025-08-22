@@ -81,7 +81,6 @@ const Category: React.FC = () => {
           body: { [selectedCategory + "." + value]: [] },
         };
       }
-      console.log("payload", payload);
 
       const result = await addProduct({
         id: productId,
@@ -114,7 +113,6 @@ const Category: React.FC = () => {
           body: { [selectedCategory + "." + value]: "" },
         };
       }
-      console.log("payload", payload);
 
       const result = await deleteProduct({
         id: productId,
@@ -188,8 +186,6 @@ const Category: React.FC = () => {
                     {selectedCategory !== "Sources" && (
                       <button
                         onClick={() => {
-                          // console.log("item", item);
-
                           setDeleteItem({ item, type: "BRANDS" });
                           setShowDeleteConfirm(true);
                         }}

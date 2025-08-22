@@ -11,10 +11,7 @@ import { useGetChallansQuery } from "../store/challan";
 import { inwardEntry } from "@/models/models";
 
 export default function RegisterPage() {
-  //rtk query will replace these two
-  // const [entries, setEntries] = useState<RegisterEntry[]>([]);
   const { data: challans, isLoading } = useGetChallansQuery();
-  // const [isLoading, setIsLoading] = useState(true);
   // ui
   const [showFilters, setShowFilters] = useState(false);
   const [activeChallanTab, setActiveChallanTab] =
@@ -22,7 +19,6 @@ export default function RegisterPage() {
   // filter purpose
   const [filteredChallans, setFilteredChallans] = useState<inwardEntry[]>([]);
   const [filters, setFilters] = useState<RegisterFilters>({});
-  // console.log("filters", filters);
 
   //filter options variables
   const USERS = [
