@@ -6,7 +6,9 @@ import ChallanCard from "@/components/Stock Dashboard/ChallansCard";
 import { cStockChallans, singleChallanEntry } from "@/models/challans";
 import { inwardEntry } from "@/models/models";
 
-const SpecificModelPage = ({ params }: { params: { model: string } }) => {
+const SpecificModelPage: React.FC<{ params: { model: string } }> = ({
+  params,
+}) => {
   const { model } = params;
 
   const currentModel = decodeURIComponent(model);
