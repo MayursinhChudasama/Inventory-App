@@ -13,7 +13,7 @@ const CurrentStock: React.FC<{ model: string }> = ({ model }) => {
     inwardChallansFlatArr,
     outwardChallansFlatArr,
     CURRENT_STOCK_CHALLANS,
-  } = getCurrentStock(ALL_CHALLANS);
+  } = getCurrentStock(ALL_CHALLANS || []);
 
   const all_inward_challans =
     inwardChallansFlatArr?.filter(
