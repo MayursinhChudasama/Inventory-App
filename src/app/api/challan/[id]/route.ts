@@ -82,13 +82,11 @@ export async function PUT(request: Request) {
 
 // DELETE /api/challan/[id]
 // Delete a Challan
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request) {
   const req = new NextRequest(request.url, request);
   try {
-    const challanId = await params.id;
+    const updateData: inwardEntry = await request.json();
+    const challanId = updateData._id;
 
     // Validate Challan ID
     if (!ObjectId.isValid(challanId)) {
@@ -97,7 +95,14 @@ export async function DELETE(
         { status: 400 }
       );
     }
+    // Check if Challan exists
+    const existingChallan = await db.collection("challans").findOne({
+      _id: new ObjectId(challanId),
+    });
 
+    if (!existingChallan) {
+      return NextResponse.json({ error: "Challan not found" }, { status: 404 });
+    }
     // Delete Challan
     const result = await db.collection("challans").deleteOne({
       _id: new ObjectId(challanId),
