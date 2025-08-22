@@ -1,7 +1,9 @@
 import { cStockChallans, singleChallanEntry } from "@/models/challans";
 import { inwardEntry } from "@/models/models";
 
-export default function getCurrentStock(ALL_CHALLANS: inwardEntry[]) {
+export default function getCurrentStock(
+  ALL_CHALLANS: inwardEntry[] | undefined
+) {
   const inwardChallans = ALL_CHALLANS?.filter(
     (challan) => challan.type === "inward"
   );
