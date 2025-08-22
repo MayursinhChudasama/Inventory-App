@@ -8,7 +8,7 @@ export const ChallanTypeButtons: React.FC<{
   names: ChallanType[];
 }> = ({ names, setActiveChallanTab, activeChallanTab }) => {
   return (
-    <div className='pb-5'>
+    <div className='pb-1.5'>
       <div className='flex justify-center space-x-2 '>
         <button
           onClick={() => setActiveChallanTab(names[0])}
