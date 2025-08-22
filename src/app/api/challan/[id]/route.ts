@@ -14,9 +14,10 @@ const db = client.db(process.env.MONGODB_DB);
 // PUT /api/challan/[id]
 // Update Challan
 export async function PUT(
-  req: NextRequest,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
+  const req = new NextRequest(request.url, request);
   //authorization checking
   const token = req.cookies.get("token")?.value;
   if (!token) {
@@ -36,8 +37,6 @@ export async function PUT(
   try {
     const challanId = await params.id;
     const updateData: inwardEntry = await req.json();
-    console.log("updateData", updateData);
-    console.log("challanId", challanId);
     // Validate Challan ID
     if (!ObjectId.isValid(challanId!)) {
       return NextResponse.json(
@@ -82,9 +81,10 @@ export async function PUT(
 // DELETE /api/challan/[id]
 // Delete a Challan
 export async function DELETE(
-  request: NextRequest,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
+  const req = new NextRequest(request.url, request);
   try {
     const challanId = await params.id;
 

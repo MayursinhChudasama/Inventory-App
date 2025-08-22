@@ -27,7 +27,6 @@ export async function POST(request: Request) {
     const db = client.db(process.env.MONGODB_DB);
 
     const data = await request.json();
-    console.log("data", data);
 
     const errors: string[] = [];
     const productsWithMissingFields = data.products.filter(
