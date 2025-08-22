@@ -17,9 +17,12 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const req = new NextRequest(request.url, request);
   //authorization checking
-  const token = req.cookies.get("token")?.value;
+  const token = request.headers
+    .get("cookie")
+    ?.split("; ")
+    .find((c) => c.startsWith("token="))
+    ?.split("=")[1];
   if (!token) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
@@ -36,7 +39,7 @@ export async function PUT(
   // updating a ChallanDATA
   try {
     const challanId = await params.id;
-    const updateData: inwardEntry = await req.json();
+    const updateData: inwardEntry = await request.json();
     // Validate Challan ID
     if (!ObjectId.isValid(challanId!)) {
       return NextResponse.json(
