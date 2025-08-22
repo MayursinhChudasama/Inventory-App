@@ -3,7 +3,7 @@ import CurrentStock from "@/components/Stock Dashboard/CurrentStock";
 const SpecificModelPage = async ({ params }: { params: { model: string } }) => {
   async function getParams() {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const { model } = params;
+    const { model } = await params;
     return model;
   }
   const model = await getParams();
