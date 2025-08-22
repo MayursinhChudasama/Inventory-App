@@ -1,19 +1,41 @@
 "use client";
 import ChallanCard from "@/components/Stock Dashboard/ChallansCard";
 import { cStockChallans, singleChallanEntry } from "@/models/challans";
-const CurrentStock: React.FC<{
-  currentModel: string;
-  CURRENT_STOCK_CHALLANS: cStockChallans[];
-  all_inward_challans: singleChallanEntry[];
-  all_outward_challans: singleChallanEntry[];
-}> = ({
-  currentModel,
-  CURRENT_STOCK_CHALLANS,
-  all_inward_challans,
-  all_outward_challans,
-}) => {
+import getCurrentStock from "@/lib/currentStock";
+import { useGetChallansQuery } from "../../app/store/challan";
+const CurrentStock: React.FC<{ model: string }> = ({ model }) => {
+  const currentModel = decodeURIComponent(model);
+  const { data: ALL_CHALLANS } = useGetChallansQuery();
+
+  const {
+    inwardChallansFlatArr,
+    outwardChallansFlatArr,
+    CURRENT_STOCK_CHALLANS,
+  } = getCurrentStock(ALL_CHALLANS);
+
+  const all_inward_challans =
+    inwardChallansFlatArr?.filter(
+      (entry: singleChallanEntry) => entry.model === currentModel
+    ) ?? [];
+
+  const all_outward_challans =
+    outwardChallansFlatArr?.filter(
+      (entry: singleChallanEntry) => entry.model === currentModel
+    ) ?? [];
+
+  const totalOutward =
+    all_outward_challans?.reduce(
+      (total: number, entry: singleChallanEntry) => total + entry.qty,
+      0
+    ) ?? 0;
   return (
     <div>
+      <div className='mb-8'>
+        <h1 className='text-3xl font-bold text-gray-800 mb-2 '>
+          {all_inward_challans[0]?.brand} {currentModel}
+        </h1>
+        <div className='w-40 h-1 bg-blue-600'></div>
+      </div>
       {/* Current Stock */}
       <div className='bg-white rounded-lg shadow-md p-6 mb-8'>
         <h2 className='text-xl font-semibold text-gray-700 mb-4'>
