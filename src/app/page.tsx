@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/auth";
+import { ToastContainer } from "react-toastify";
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -98,6 +99,17 @@ export default function HomePage() {
           </button>
         </form>
       </div>
+      <ToastContainer
+        position='bottom-center'
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

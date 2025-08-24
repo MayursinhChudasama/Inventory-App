@@ -22,7 +22,9 @@ const ProductsList: React.FC<{
     }))
   );
   const [productList, setProductList] = useState<singleProduct[]>([]);
-  const totalQty = productList.reduce((acc, item) => acc + (item.qty || 0), 0);
+  const totalQty = productList
+    .filter((item) => item !== null)
+    .reduce((acc, item) => acc + (item.qty || 0), 0);
 
   //
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,17 +57,23 @@ const ProductsList: React.FC<{
         ...prev[index],
         [key]: value,
       };
-      const updatedArray = JSON.parse(JSON.stringify(prev));
+      let updatedArray = JSON.parse(JSON.stringify(prev));
       updatedArray[index] = newEntry;
-
+      if (updatedArray[index] === null) {
+        updatedArray[index] = {};
+      }
       return updatedArray;
     });
   };
 
+  // unique models from productList
+
+  console.log("productListModels", productListModels);
+
   useEffect(() => {
     setEntryData((prev) => ({
       ...prev,
-      products: productList,
+      products: productList.filter((item) => item !== null),
     }));
   }, [productList]);
 

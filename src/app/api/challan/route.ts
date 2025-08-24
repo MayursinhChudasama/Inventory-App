@@ -40,21 +40,32 @@ export async function POST(request: Request) {
     if (!data.category || data.category == "Default") {
       errors.push("Please select a category.");
     }
+    if (!data.challan_no) {
+      errors.push("Please enter a challan number.");
+    }
     if (!data.source || data.source == "Default") {
       errors.push(
         `Please select a ${data.type === "inward" ? "Supplier" : "Buyer"}`
       );
     }
-    if (!data.challan_no) {
-      errors.push("Please enter a challan number.");
-    }
+
     if (data.products.length === 0) {
       errors.push("Please add at least one product.");
     }
     if (productsWithMissingFields.length > 0) {
       errors.push("Please fill all fields of the products.");
     }
-
+    const seen = new Set();
+    const productListModels = data.products
+      .filter((item: singleProduct) => {
+        if (seen.has(item.model)) return false;
+        seen.add(item.model);
+        return true;-*/
+      })
+      .map((item: singleProduct) => item.model);
+    if (productListModels.length !== data.products.length) {
+      errors.push(`"${productListModels[0]}" has added twice.`);
+    }
     if (errors.length > 0) {
       return new Response(
         JSON.stringify({ success: true, message: errors[0] }),

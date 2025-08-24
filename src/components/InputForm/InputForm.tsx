@@ -9,7 +9,8 @@ import { useGetProductsQuery } from "@/app/store/productsApi";
 import { RootState } from "@/app/store/store";
 import { useAddChallanMutation } from "@/app/store/challan";
 import { useRouter } from "next/navigation";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const InputForm: React.FC<{
   activeChallanTab: string;
 }> = ({ activeChallanTab }) => {
@@ -34,7 +35,7 @@ const InputForm: React.FC<{
     isLoading,
     error: getProductsError,
   } = useGetProductsQuery();
-  const [addChallan, { error: addChallanError }] = useAddChallanMutation();
+  const [addChallan] = useAddChallanMutation();
   const categories = Object.keys(products?.[0] || {}).filter(
     (key) => key !== "_id" && key !== "Sources"
   );
@@ -47,8 +48,6 @@ const InputForm: React.FC<{
     Object.values(products?.[0]?.["Sources"]["Buyer"] || {}) || [];
 
   //
-  const [successMessage, setSuccessMessage] = useState("");
-  const errorMessage: string = addChallanError?.data?.message;
   const inwardEntryDataInputHandler = (
     key?: string,
     value?: string | number
@@ -59,15 +58,22 @@ const InputForm: React.FC<{
       [key]: value,
     }));
   };
-
+  console.log("entryData", entryData);
   async function handleAddEntryData() {
     try {
-      const result = await addChallan({ body: entryData }).unwrap();
-
-      setSuccessMessage("Challan added successfully!");
-
+      const result = await toast.promise(
+        addChallan({ body: entryData }).unwrap(),
+        {
+          pending: "Adding challan...",
+          success: "Challan added successfully!",
+          error: {
+            render({ data }) {
+              return data?.data?.message || "Error adding challan";
+            },
+          },
+        }
+      );
       setTimeout(() => {
-        setSuccessMessage("");
         route.push("/dashboard");
       }, 1500);
       return result;
@@ -148,23 +154,18 @@ const InputForm: React.FC<{
         onClick={handleAddEntryData}>
         Add Challan
       </button>
-      {/* Error Message */}
-      {errorMessage && (
-        <div
-          className='text-red-500 mb-1 text-center text-sm'
-          role='alert'>
-          <span className='block sm:inline'>{errorMessage}</span>
-        </div>
-      )}
 
-      {/* Success Message */}
-      {successMessage && (
-        <div
-          className='text-green-500 mb-1 text-center text-sm'
-          role='alert'>
-          <span className='block sm:inline'>{successMessage}</span>
-        </div>
-      )}
+      <ToastContainer
+        position='top-center'
+        autoClose={1000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
